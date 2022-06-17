@@ -1,0 +1,43 @@
+$theme-color-1: #e06a0a;
+$theme-color-2: #68b8cf;
+$theme-color-3: #585857;
+$font-family: 'Nunito';
+*{
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+.bt-section{
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    .bt-container-full{
+        width: 100%;
+    }
+    > .bt-container{
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .bt-background-thumbnails{
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
+#page{
+    h1:before, h2:before{
+        content: none;
+    }
+}
+@import '/scss/custom-theme';
+@import '/scss/footer';
+@import '/scss/team/single';
+@import '/scss/team/archive';
+@import '/scss/artists/archive';
+@import '/scss/artists/single';
+@import '/scss/pageInner';
