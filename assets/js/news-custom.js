@@ -21,7 +21,7 @@ jQuery(function ($) {
     const $ctaToggleNav  = $itemsMobile.find('.bt-btn-toggle');
      
     const $stepPhoto     = $stepParents.find('.bt-gallery-step-vd');
-    const $steDessins    = $stepParents.find('.bt-dessins-step-vd');
+    const $stepDessins    = $stepParents.find('.bt-dessins-step-vd');
 
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
     
@@ -33,7 +33,18 @@ jQuery(function ($) {
     })
 
     function __backHomepage(){
+
+      let $notSsVd = $mainSite.find('.bt-section').not( $mainSite.find('.bt-section-tpl-vd'))
+
       $mainSite.removeClass('scroll');
+      $itemsMobile.find('.bt-menu-mobile').removeClass('active')
+                                          .slideUp("swing")
+      $mainSite.find('.bt-section').removeClass('active')
+                                   .addClass('hidden') 
+      $mainSite.find('.bt-section-tpl-vd').removeClass('hidden')
+                                          .addClass('active') 
+      $itemParents.trigger("to.owl.carousel", [0, 500, true]);                                    
+
     }
 
     $navDesktop.click(function(v){
@@ -74,7 +85,7 @@ jQuery(function ($) {
           $mainSite.removeClass('active')
           $toggleNav.removeClass('active')
           $stepPhoto.removeClass('active')
-          $steDessins.removeClass('active')
+          $stepDessins.removeClass('active')
           $ctaToggleNav.removeClass('active')
 
           $mainSite.find('.bt-section').removeClass('active')

@@ -95,27 +95,27 @@ jQuery(document).ready(function($) {
 
     // click logo comback home page
     var isLogo = jQuery('.page-template-template-video .bt-logo .bt-logo-site');
-    isLogo.click(function(el){
-        el.preventDefault();
-        jQuery(".page-template-template-video .site-main").removeClass("scroll");
-        isMenuMobile.slideUp("swing");
-        jQuery('.page-template-template-video .bt-item-page-mobile .bt-btn-toggle').removeClass('active');
-        isMenuMobile.removeClass('active');
-        isSectionScroll.removeClass('active');
-        isSectionScroll.addClass('hidden');
-        jQuery('.site-main > .bt-section-tpl-vd').removeClass('hidden');
-        jQuery('.site-main > .bt-section-tpl-vd').addClass('active');
-        isSsDessins.removeClass('active');
-        isSsPhoto.removeClass('active');
-        btsync1.trigger("to.owl.carousel", [0, 500, true]);
-        setTimeout( () => {
-            $.each( videos, function (index, value ) {
-                isBtnPlay.addClass('play');
-                value.pause();
-                jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
-            } )
-        }, 1000 )
-    });
+    // isLogo.click(function(el){
+    //     el.preventDefault();
+    //     jQuery(".page-template-template-video .site-main").removeClass("scroll");
+    //     isMenuMobile.slideUp("swing");
+    //     jQuery('.page-template-template-video .bt-item-page-mobile .bt-btn-toggle').removeClass('active');
+    //     isMenuMobile.removeClass('active');
+    //     isSectionScroll.removeClass('active');
+    //     isSectionScroll.addClass('hidden');
+    //     jQuery('.site-main > .bt-section-tpl-vd').removeClass('hidden');
+    //     jQuery('.site-main > .bt-section-tpl-vd').addClass('active');
+    //     isSsDessins.removeClass('active');
+    //     isSsPhoto.removeClass('active');
+    //     btsync1.trigger("to.owl.carousel", [0, 500, true]);
+    //     setTimeout( () => {
+    //         $.each( videos, function (index, value ) {
+    //             isBtnPlay.addClass('play');
+    //             value.pause();
+    //             jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
+    //         } )
+    //     }, 1000 )
+    // });
 
     // comback section
     var isComeBack = jQuery(".page-template-template-video .bt-comeback .icon-comeback");
