@@ -324,3 +324,4 @@ require get_template_directory() . '/inc/customizer.php';
 
 require get_template_directory() . '/assets/helper.php';
 require get_template_directory() . '/inc/helper.php';
+require get_template_directory() . '/resources/helpers.php';
