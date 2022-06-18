@@ -25,7 +25,7 @@ $tpl_vd = get_fields();
                         <div class="bt-item-vd item" data-index="<?php echo $index; ?>">
                             <?php if($tpl_vd['icon_smiley_tplvd']){ ?>
                                 <div class="bt-smiley">
-                                    <img src="<?php echo $tpl_vd['icon_smiley_tplvd']; ?>" alt="icon-smiley"/>
+                                    <img src="<?php echo $tpl_vd['icon_smiley_tplvd']; ?>" alt="icon-smiley" data-section="smiley"/>
                                 </div>
                             <?php } ?>
                         </div>

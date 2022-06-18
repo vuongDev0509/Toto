@@ -39,7 +39,7 @@ $tpl_vd = get_fields();
     <section class="bt-section bt-section-grid-team bt-team">
         <?php get_template_part('template-parts/content/content', 'team' ); ?>
     </section>
-    <section class="bt-section bt-section-grid-artists bt-artistes">
+    <section class="bt-section bt-section-grid-artists bt-artistes bt-section-artistes">
         <?php get_template_part('template-parts/content/content', 'artists' ); ?>
     </section>
     <section class="bt-section bt-section-contact bt-contact">

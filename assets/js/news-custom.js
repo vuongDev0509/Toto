@@ -15,13 +15,15 @@ jQuery(function ($) {
     const $navDesktop    = $itemParents.find('.bt-items-page .bt-title');
     let $allVideo        = $itemParents.find('video');
 
+    const $iconSmiley    = $itemChildrens.find('.bt-smiley > img');
+
     const $ctaNavMobile  = $itemsMobile.find('.toggole-menu-mobile');
     const $toggleNav     = $itemsMobile.find('.bt-btn-toggle');
     const $navMobile     = $itemsMobile.find('.bt-menu-mobile .item');
     const $ctaToggleNav  = $itemsMobile.find('.bt-btn-toggle');
      
     const $stepPhoto     = $stepParents.find('.bt-gallery-step-vd');
-    const $stepDessins    = $stepParents.find('.bt-dessins-step-vd');
+    const $stepDessins   = $stepParents.find('.bt-dessins-step-vd');
 
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
     
@@ -31,21 +33,6 @@ jQuery(function ($) {
       e.preventDefault();
       __backHomepage();
     })
-
-    function __backHomepage(){
-
-      let $notSsVd = $mainSite.find('.bt-section').not( $mainSite.find('.bt-section-tpl-vd'))
-
-      $mainSite.removeClass('scroll');
-      $itemsMobile.find('.bt-menu-mobile').removeClass('active')
-                                          .slideUp("swing")
-      $mainSite.find('.bt-section').removeClass('active')
-                                   .addClass('hidden') 
-      $mainSite.find('.bt-section-tpl-vd').removeClass('hidden')
-                                          .addClass('active') 
-      $itemParents.trigger("to.owl.carousel", [0, 500, true]);                                    
-
-    }
 
     $navDesktop.click(function(v){
       __stopAllVideo();
@@ -58,6 +45,27 @@ jQuery(function ($) {
     $ctaNavMobile.click(function(e){
       e.preventDefault();
       MenuMobile($itemParents);
+    })
+
+    // redirect to inner smiley
+    $iconSmiley.click(function(e){
+      e.preventDefault()
+      e.stopPropagation()
+      let $dataSs = $(this).data('section')
+      $mainSite.addClass('scroll')
+      __redirectStepVd($dataSs)                            
+    })
+
+    $itemParents.find('.__navs-videos .__navs-videos-step').click(function(){
+      let $dataPage = $(this).data('page');
+      $mainSite.removeClass("scroll")
+      __redirectStepVd($dataPage)
+    });
+
+    // redirect to inner page
+    $itemParents.find('.__navs-videos .__step-inner').click(function(){
+      let $dataPage = $(this).data('page');
+      $(this).parents('.bt-item-vd').find(`.bt-${$dataPage}-step-vd`).addClass('active');
     })
 
     // event for icon play video when click
@@ -76,7 +84,42 @@ jQuery(function ($) {
       }
     });
 
-    
+
+    $( 'body' ).on( 'click', '.bt-comeback .icon-comeback', __comebackSection)
+
+    function __comebackSection(){  
+      __showHomePage()                           
+      $(this).parents('.bt-item-details').removeClass('active')                        
+    }
+
+    function __showHomePage(){
+      $mainSite.find('.bt-section').removeClass('active')
+                                    .addClass('hidden')
+      $mainSite.find('.bt-section-tpl-vd').removeClass('hidden')
+                                          .addClass('active') 
+    }
+
+    function __redirectStepVd($data){
+      $mainSite.find('.bt-section').addClass('hidden')
+                                  .removeClass('active')
+      $mainSite.find(`.bt-section-${$data}`).addClass('active')
+                                  .removeClass('hidden')  
+    }
+
+    function __backHomepage(){
+      __showHomePage()
+      $mainSite.removeClass('scroll');
+      $stepDessins.removeClass('active')
+      $stepPhoto.removeClass('active')                                      
+      $itemParents.trigger("to.owl.carousel", [0, 500, true])
+      $itemsMobile.find('.bt-menu-mobile').removeClass('active')
+                                          .slideUp("swing")
+      setTimeout( () => {
+        __stopAllVideo()
+      }, 1000 )
+
+    }
+
     // show all video when click step for children carousel
     function __showAllVideo(){
       
@@ -223,9 +266,9 @@ jQuery(function ($) {
           autoplayHoverPause:false,
           nav: false,
           dots: true
-        }).on('changed.owl.carousel', parentPosition);
+        }).on('changed.owl.carousel', callBackParents);
   
-        function parentPosition(el) {
+        function callBackParents(el) {
           let $owl_slider = $(this).data('owl.carousel'),
               loop        = $owl_slider.options.loop;
   
