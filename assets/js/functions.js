@@ -4,8 +4,8 @@ jQuery(function ($) {
 
   const VideoTemplate = () =>{
     const $tplVideo      = $('.page-template-template-video');
-    const $itemParents   = $tplVideo.find('#bt-sync1');
-    const $itemChildrens = $tplVideo.find('#bt-sync2');
+    const $itemParents   = $tplVideo.find('#bt-parents-video');
+    const $itemChildrens = $tplVideo.find('#bt-childrens-video');
     const $mainSite      = $tplVideo.find('.site-main');
     const $logo          = $tplVideo.find('.bt-logo-site')  
 

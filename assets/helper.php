@@ -17,8 +17,7 @@
     wp_enqueue_style( 'toto-fonts-nunito', get_stylesheet_directory_uri() . '/assets/fonts/Nunito/stylesheet.css', array() );
 
 
-    wp_enqueue_script( 'toto-news-custom', get_stylesheet_directory_uri() . '/assets/js/news-custom.js',array( 'jquery' ), '1.0.1', true);
-    wp_enqueue_script( 'toto-custom-theme', get_stylesheet_directory_uri() . '/assets/js/custom-themes.js',array( 'jquery' ), '1.0', true);
+    wp_enqueue_script( 'toto-functions', get_stylesheet_directory_uri() . '/assets/js/functions.js',array( 'jquery' ), '1.0.2', true);
     wp_enqueue_script( 'toto-custom-ajax', get_stylesheet_directory_uri() . '/assets/js/custom-ajax.js',array( 'jquery' ), '1.0', true);
    	wp_enqueue_script( 'toto-owl-carousel', get_stylesheet_directory_uri() . '/assets/js/Owl-Carousel/owl.carousel.js',array( 'jquery' ), '1.0', true);
    	wp_enqueue_script( 'toto-owl-carousel-min', get_stylesheet_directory_uri() . '/assets/js/Owl-Carousel/owl.carousel.min.js',array( 'jquery' ), '1.0', true);

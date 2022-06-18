@@ -8,7 +8,7 @@
 $tpl_vd = get_fields();
 $video_steps = $tpl_vd['video_step'];
 ?>
-<div id="bt-sync1" class="bt-carousel-tpldv owl-carousel owl-theme">
+<div id="bt-parents-video" class="bt-carousel-tpldv owl-carousel owl-theme">
     <?php
     $i = 0;
     foreach( $video_steps as $items ): ?>
