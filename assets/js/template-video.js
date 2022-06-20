@@ -73,30 +73,30 @@
 
       if (dataTimeline != "" && dataTimeline != undefined) {
 
-        allSection.removeClass('active');
-        allSection.addClass('hidden');
-        footerCarousel.addClass('active');
-        $('.page-template-template-video .bt-section-tpl-vd').removeClass('hidden');
-        $('.page-template-template-video .bt-section-tpl-vd').addClass('active');
-        footerCarousel.find('.bt-carousel-tpldv').hide();
-        footerCarousel.find(`.bt-carousel-tpldv.${dataTimeline}`).show();
-        listTtimeline.hide();
-        $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).show();
+      //   allSection.removeClass('active');
+      //   allSection.addClass('hidden');
+      //   footerCarousel.addClass('active');
+      //   $('.page-template-template-video .bt-section-tpl-vd').removeClass('hidden');
+      //   $('.page-template-template-video .bt-section-tpl-vd').addClass('active');
+      //   footerCarousel.find('.bt-carousel-tpldv').hide();
+      //   footerCarousel.find(`.bt-carousel-tpldv.${dataTimeline}`).show();
+      //   listTtimeline.hide();
+      //   $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).show();
 
-        // load carousel
-        let idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).attr('id');
-        let idChildrens = $(`.site-footer .bt-carousel-tpldv.${dataTimeline}`).attr('id');
+      //   // load carousel
+      //   let idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).attr('id');
+      //   let idChildrens = $(`.site-footer .bt-carousel-tpldv.${dataTimeline}`).attr('id');
 
-        // call funtion load carousel timelines
-       // loadTempalteTimelines(idParents, idChildrens)
+      //   // call funtion load carousel timelines
+      //  // loadTempalteTimelines(idParents, idChildrens)
 
-        // call funtion first video play when load timelines
+      //   // call funtion first video play when load timelines
 
-        $('.be_timelines_item_3 .active.current').trigger('click')
-        $('.be_timelines_item_1 .active.current').trigger('click')
-        setTimeout( () => {
-          playVideo(idParents);
-        }, 1000 )
+      //   $('.be_timelines_item_3 .active.current').trigger('click')
+      //   $('.be_timelines_item_1 .active.current').trigger('click')
+      //   setTimeout( () => {
+      //     playVideo(idParents);
+      //   }, 1000 )
 
       }
 
@@ -447,9 +447,9 @@
   // first video play when load timelines
   function playVideo(data){
     let myVideo = document.querySelector(`#${data} .owl-item.active .video-js`);
-    $(`#${data} .owl-item.active`).find('.bt-icon-play').removeClass('play');
-    $(`#${data} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
-    myVideo.play();
+    // $(`#${data} .owl-item.active`).find('.bt-icon-play').removeClass('play');
+    // $(`#${data} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
+    // myVideo.play();
   }
 
   function switchTotoBus(){

@@ -561,6 +561,7 @@ jQuery(function ($) {
   const TimelinesTemplate = () =>{
     const $tplVideo      = $('.page-template-template-video');
     const $ssTimelines   = $tplVideo.find('#page_2');
+    const $mainSite      = $tplVideo.find('.site-main');
     const $itemTimelines = $ssTimelines.find('.bt_list_item_header_video .heading')
     const $footer        = $tplVideo.find('.site-footer');
 
@@ -577,6 +578,16 @@ jQuery(function ($) {
           let $itemParents   = $(`#${$idParents}`)
           let $itemChildrens = $(`#${$idChildrens}`)
 
+          $mainSite.find('.bt-section').addClass('hidden')
+                                      .removeClass('active');
+          $mainSite.find('.bt-section-tpl-vd').addClass('active')
+                                              .removeClass('hidden');
+          $footer.removeClass('acitve')
+                 .find('.bt-carousel-tpldv').hide();
+          $itemParents.show()
+          $itemChildrens.show()
+          $('.be_timelines_item_3 .active.current').trigger('click')
+          $('.be_timelines_item_1 .active.current').trigger('click')
           VideoTemplate($itemParents, $itemChildrens)
         }
       });
