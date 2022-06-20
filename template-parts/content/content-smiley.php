@@ -16,7 +16,7 @@ $tpl_vd = get_fields();
 <div class="bt-comeback">
     <div class="bt-btn-reload-ajax">
         <?php if($tpl_vd['icon_comeback_tplvd']){ ?>
-            <img src="<?php echo $tpl_vd['icon_comeback_tplvd']; ?>" alt="icon-comeBack" />
+            <img src="<?php echo $tpl_vd['icon_comeback_tplvd']; ?>" alt="icon-comeBack" class="aaa" />
         <?php } ?>
     </div>
     <?php get_template_part('template-parts/content/content', 'comeback' ); ?>

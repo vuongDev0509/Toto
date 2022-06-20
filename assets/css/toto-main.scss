@@ -41,3 +41,52 @@ $font-family: 'Nunito';
 @import '/scss/artists/archive';
 @import '/scss/artists/single';
 @import '/scss/pageInner';
+@import '/scss/template-video/_page_1';
+@import '/scss/template-video/_page_2';
+@import '/scss/template-video/_page_3';
+@import '/scss/template-video/timelines';
+.bt-carousel-tpldv{
+  display: none;
+  .icon-switch-next{
+    max-width: 50px;
+    position: fixed;
+    z-index: 9999;
+    bottom: 80px;
+    right: 20px;
+    cursor: pointer;
+  }
+}
+
+.bt-section{
+  &.bt-section-tpl-vd{
+    #toto-second-videos{
+      .bt-comeback{
+        img{
+          opacity: 1;
+          z-index: 999999;
+          position: absolute;
+          bottom: 95px;
+          left: 20px;
+          top: inherit;
+          @media only screen and (max-width: 767px){
+            display: inline-block;
+            bottom: 120px;
+          }
+        }
+        &.hidden{
+          img{
+            opacity: 0;
+            z-index: -9999;
+          }
+        }
+      }
+    }
+    .bt-carousel-tpldv{
+      @media only screen and (max-width: 767px){
+        .bt-comeback>img{
+          display: none;
+        }
+      }
+    }
+  }
+}

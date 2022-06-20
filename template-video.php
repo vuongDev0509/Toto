@@ -8,23 +8,12 @@
 get_header();
 $tpl_vd = get_fields();
 ?>
-<section class="bt-section bt-section-header-tpldv">
-    <?php if($tpl_vd['background_header_template_video']){ ?>
-        <div class="bt-header-tpl-vd">
-            <div class="bt-thumbnails bt-background-thumbnails" style="background-image: url(<?php echo $tpl_vd['background_header_template_video']; ?>)"> </div>
-            <div class="bt-meta-hd">
 
-                <?php if($tpl_vd['logo_site_tpl_vd']){ ?>
-                    <img src="<?php echo $tpl_vd['logo_site_tpl_vd']; ?>" class="bt-logo-site" alt="logo-site">
-                <?php } ?>
-                <?php if($tpl_vd['icon_play_site_tpl_vd']){ ?>
-                    <img src="<?php echo $tpl_vd['icon_play_site_tpl_vd']; ?>" class="icon-play">
-                <?php } ?>
-            </div>
-        </div>
-    <?php } ?>
-</section>
+<?php get_template_part( 'template-parts/template-video/template-header', 'video' ); ?>
 <main id="main" class="site-main">
+  <?php get_template_part( 'template-parts/template-video/page', '2' ); ?>
+  <?php get_template_part( 'template-parts/template-video/page', '3' ); ?>
+
     <section class="bt-section bt-section-tpl-vd">
         <div class="bt-container-full">
             <?php if($tpl_vd['video_step']){ ?>
@@ -39,7 +28,7 @@ $tpl_vd = get_fields();
     <section class="bt-section bt-section-grid-team bt-team">
         <?php get_template_part('template-parts/content/content', 'team' ); ?>
     </section>
-    <section class="bt-section bt-section-grid-artists bt-artistes bt-section-artistes">
+    <section class="bt-section bt-section-grid-artists bt-artistes">
         <?php get_template_part('template-parts/content/content', 'artists' ); ?>
     </section>
     <section class="bt-section bt-section-contact bt-contact">
@@ -52,6 +41,37 @@ $tpl_vd = get_fields();
         <?php get_template_part('template-parts/content/content', 'smiley' ); ?>
     </section>
     <section class="bt-section bt-section-single-postype"></section>
+
+    <?php
+
+    $video_steps_2 = $tpl_vd['items_second_videos'];
+    $list_ids = array(245);
+    foreach ($video_steps_2 as $key => $items) {
+      ?>
+       <?php if($items['menu']){
+             $item_menus = $items['menu']; ?>
+             <?php foreach( $item_menus as $menu ): ?>
+                 <?php
+                   $slugItem = sanitize_title($menu['item']);
+                   $type_menu = sanitize_title($menu['type']);
+                   if($type_menu == 'content' && !in_array($menu['content'],$list_ids)){
+                     $list_ids[] = $menu['content'];
+                     ?>
+                     <section class="bt-section bt-section-<?php echo $slugItem; ?> bt-<?php echo $slugItem; ?>">
+                       <?php echo do_shortcode('[elementor-template id="'.$menu['content'].'"]'); ?>
+                       <div class="bt-comeback">
+                           <?php get_template_part('template-parts/content/content', 'comeback' ); ?>
+                       </div>
+                     </section>
+                     <?php
+                   }
+                 ?>
+             <?php endforeach; ?>
+       <?php } ?>
+      <?php
+    }
+     ?>
+
 </main>
 <?php
 get_footer();

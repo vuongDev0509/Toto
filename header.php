@@ -36,14 +36,14 @@
 </div>
 <div class="bt-header-main">
 	<div class="bt-container">
-		<div class="bt-logo">
+		<a class="bt-logo" href="/toto">
 			<!-- `the_custom_logo();` -->
 			<?php
 			$tpl_vd = get_fields();
 			 if($tpl_vd['logo_site_tpl_vd']){ ?>
 				<img src="<?php echo $tpl_vd['logo_site_tpl_vd']; ?>" class="bt-logo-site bt-icon-comeback" alt="logo-site">
 			<?php } ?>
-		</div>
+		</a>
 	</div>
 </div>
 <div id="page" class="site">

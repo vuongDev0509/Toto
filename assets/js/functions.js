@@ -1,11 +1,8 @@
 jQuery(function ($) {
 	"use strict";
 
-
-  const VideoTemplate = () =>{
+  const VideoTemplate = ($itemParents, $itemChildrens) =>{
     const $tplVideo      = $('.page-template-template-video');
-    const $itemParents   = $tplVideo.find('#bt-parents-video');
-    const $itemChildrens = $tplVideo.find('#bt-childrens-video');
     const $mainSite      = $tplVideo.find('.site-main');
     const $logo          = $tplVideo.find('.bt-logo-site')  
 
@@ -18,7 +15,6 @@ jQuery(function ($) {
     const $iconSmiley    = $itemChildrens.find('.bt-smiley > img');
 
     const $ctaNavMobile  = $itemsMobile.find('.toggole-menu-mobile');
-    const $toggleNav     = $itemsMobile.find('.bt-btn-toggle');
     const $navMobile     = $itemsMobile.find('.bt-menu-mobile .item');
     const $ctaToggleNav  = $itemsMobile.find('.bt-btn-toggle');
      
@@ -26,8 +22,8 @@ jQuery(function ($) {
     const $stepDessins   = $stepParents.find('.bt-dessins-step-vd');
 
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
-    
-    __startVdTemplate();
+   
+    __startVdTemplate($itemParents);
 
     $logo.click(function(e){
       e.preventDefault();
@@ -69,21 +65,21 @@ jQuery(function ($) {
     })
 
     // event for icon play video when click
-    $ctaPlay.find('.icon-play-vd').click(function(){
-      let $videoActive = document.querySelector(".owl-item.active .video-js");
+    function __handleIconPlay($data){
+        $ctaPlay.find('.icon-play-vd').click(function(){
+            let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
 
-      if ($videoActive.paused){
-        $(this).removeClass('paused');
-        $ctaPlay.removeClass('play');
-        $videoActive.play();
-      }
-      else{
-        $(this).addClass('paused');
-        $ctaPlay.addClass('play');
-        $videoActive.pause();
-      }
-    });
-
+            if ($vdActive.paused){
+                $(this).removeClass('paused');
+                $ctaPlay.removeClass('play');
+                $vdActive.play();
+            }else{
+                $(this).addClass('paused');
+                $ctaPlay.addClass('play');
+                $vdActive.pause();
+            }
+        });
+    }
 
     $( 'body' ).on( 'click', '.bt-comeback .icon-comeback', __comebackSection)
 
@@ -126,7 +122,7 @@ jQuery(function ($) {
       $itemChildrens.find('.owl-item').each(function(index){
         $(this).click(function(){
           $mainSite.removeClass('active')
-          $toggleNav.removeClass('active')
+          $ctaToggleNav.removeClass('active')
           $stepPhoto.removeClass('active')
           $stepDessins.removeClass('active')
           $ctaToggleNav.removeClass('active')
@@ -148,32 +144,20 @@ jQuery(function ($) {
       } )
     }
 
-    function __startVdTemplate(){
-      const $iconStart = $tplVideo.find('.bt-header-tpl-vd .icon-play');
-      $iconStart.click(function(e){
+    function __startVdTemplate($data){
         __renderVdTemplate()
-        __showAllVideo()        
+        __showAllVideo()  
 
-        let $vdActive = document.querySelector(".owl-item.active .video-js");
-        let $owl      = $('.owl-carousel');
-
-        $tplVideo.addClass('active');
- 
-        if ($vdActive.paused){
-          $vdActive.play();
-          $vdActive.onended = function() {
-            $owl.trigger('next.owl.carousel');
-          };
-          $ctaPlay.removeClass('play');
-          $ctaPlay.find('.icon-play-vd').removeClass('paused');
+        let $id = $data.attr('id')
+        let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
+       // console.log($id)
+        $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
+        $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
+        if($vdActive){
+            $vdActive.play();
         }
-        else{
-          $vdActive.pause();
-          $ctaPlay.addClass('play');
-          $ctaPlay.find('.icon-play-vd').addClass('paused');
-        }
-      });
-
+        
+        __handleIconPlay($id)
     }
 
     function __renderVdTemplate(){
@@ -188,7 +172,7 @@ jQuery(function ($) {
           setTimeout( () => {
 
             let $itemCurrent = $data.find('.owl-item.current');
-            jQuery(".bt-icon-spacing>img").css({
+            $(".bt-icon-spacing>img").css({
               "left": $itemCurrent.left
             }).fadeIn(500)
 
@@ -204,7 +188,7 @@ jQuery(function ($) {
           let $itemCurrent = $itemChildrens.find('.owl-item.current').offset();
           $ctaPlay.removeClass('play');
   
-          jQuery(".bt-icon-spacing>img").css({
+          $(".bt-icon-spacing>img").css({
             "left": $itemCurrent.left
           }).fadeIn(500);
   
@@ -248,6 +232,19 @@ jQuery(function ($) {
             }, 1200 )
           } );
         });
+      }
+
+      function __updateTemplate(){
+        // if($('#page_2').hasClass('hidden') && $('#page_3').hasClass('hidden')){
+        //     $mainSite.removeClass("scroll");
+        //     $ctaToggleNav.removeClass('active');
+        //     $itemsMobile.find('.bt-menu-mobile').removeClass('active')
+        //                                         .slideUp("swing")
+        //     $mainSite.find('.bt-section').removeClass('hidden')
+        //                                  .removeClass('active')     
+        //     $stepPhoto.removeClass('active')
+        //     $stepDessins.removeClass('active')                                                                                   
+        // }
       }
   
       function __runCarousel($itemParents, $itemChildrens) {
@@ -357,10 +354,12 @@ jQuery(function ($) {
             var duration = 300;
             var itemIndex =  $(e.target).parents($itemCarousel).index();
             $itemParents.trigger('to.owl.carousel',[itemIndex, duration, true]);
+            __updateTemplate()
         }).on("changed.owl.carousel", function (el) {
             var number = el.item.index;
             var $owl_slider = $itemParents.data('owl.carousel');
             $owl_slider.to(number, 100, true);
+            __updateTemplate()
         });
   
         __childrenOnchange($itemChildrens)
@@ -385,7 +384,7 @@ jQuery(function ($) {
   }
 
   const RenderMetaHeader = () =>{
-    const $metaHd = $('.bt-section-header-tpldv .bt-meta-hd');
+    const $metaHd  = $('.bt-section-header-tpldv .bt-meta-hd');
     let $widthMeta = $metaHd.width();
     $metaHd.height($widthMeta);
   }
@@ -393,8 +392,8 @@ jQuery(function ($) {
   // render set width and height for video
   const RenderVideo = () =>{
     
-    let isVideo = $('.bt-carousel-tpldv .video-js');
-    let widthWindow= window.innerWidth;
+    let isVideo      = $('.bt-carousel-tpldv .video-js');
+    let widthWindow  = window.innerWidth;
     let heightWindow = window.innerHeight;
 
     if(widthWindow > heightWindow){
@@ -447,6 +446,132 @@ jQuery(function ($) {
     });
   }
 
+  const TotoBusVideo = () =>{
+
+    const $tplVideo      = $('.page-template-template-video')
+    const $ctaShow       = $tplVideo.find('#page_2 .heading.be_timelines_toto_bus');
+    const $itemParents   = $tplVideo.find('#bt-sync1');
+    const $itemChildrens = $tplVideo.find('#bt-sync2');
+    const $mainSite      = $tplVideo.find('.site-main');
+    const $totoBus       = $mainSite.find('.bt-section-tpl-vd');
+    const $footer        = $tplVideo.find('.site-footer');
+
+    $ctaShow.click(function(){
+        VideoTemplate($itemParents, $itemChildrens)
+        __showTotoBusVideo();
+    });
+
+    function __showTotoBusVideo(){
+        $totoBus.siblings().removeClass('active')
+                .siblings().addClass('hidden')
+        
+        $totoBus.removeClass('hidden')
+                .addClass('active')
+
+        $footer.addClass('active')
+        $footer.find('.bt-carousel-tpldv').hide();
+        $totoBus.find('.bt-carousel-tpldv').hide();
+        $itemChildrens.show();
+        $itemParents.show();
+    }
+  }
+
+  const HanldeHeader = () =>{
+    const $tplVideo    = $('.page-template-template-video');
+    const $header      = $tplVideo.find('.bt-section-header-tpldv');
+    const $ssTimelines = $tplVideo.find('#page_2');
+
+    let $itemMenu      = $header.find('.bt_list_item_header_video .heading');
+    let $itemHeader    = $header.find('.be_header_items_template')
+
+    __loadSsTimelines()
+    __showItemHeader()
+    __comeBackHeaderMain()
+    __handleMenuBar()
+   
+    function __loadSsTimelines(){
+        $header.find('.bt-meta-hd').click(function(){
+            $tplVideo.addClass('active')
+            $ssTimelines.addClass('active')
+            $tplVideo.find('.bt-logo-site').addClass('next-step-3')
+        })
+    }
+
+    function __showItemHeader(){
+        $itemMenu.click(function(){
+            let dataTemplate = $(this).data('template');
+            $itemHeader.removeClass('active');
+            $(`.bt-section-header-tpldv .be_header_items_template.${dataTemplate}`).addClass('active');
+        });
+    }
+
+    function __comeBackHeaderMain(){
+        $itemHeader.find('.bt-back').click(function(){
+            $itemHeader.removeClass('active')
+        })   
+    }
+
+    function __handleMenuBar(){
+        $('.toggle-menu-bar').on('click',function(){
+            var templ_menu = $(this).parent();
+            templ_menu.toggleClass('close');
+            $(this).toggleClass('close');
+        });
+    }
+
+  }
+
+  const SecondVideo = () =>{
+    const $tplVideo           = $('.page-template-template-video');
+    const $footer             = $tplVideo.find('.site-footer');
+    let $secondVideo          = $('#toto-second-videos')
+    let $secondVideoStep      = $('#steps-second-videos')
+    let $setting_second_video = tv_settings.second_video;
+    __showSecondVideo()
+
+    //Event show step second Video 
+    function __showSecondVideo(){
+        $('.bt-carousel-tpldv .icon-switch-next').on('click',function(){
+            VideoTemplate($secondVideo, $secondVideoStep)
+
+            $tplVideo.find('.bt-carousel-tpldv').hide();
+            $secondVideo.show();
+            $secondVideoStep.show();
+
+            var icon_img = $setting_second_video.steps.icon;
+            var img =   $('.bt-section-content-footer .bt-icon-spacing img');
+            var bg_text = $setting_second_video.steps.background_point;
+            var color_text = $setting_second_video.steps.text_color;
+  
+            //Steps
+            img.attr('src',icon_img);
+            img.css('left','16px');
+            $secondVideoStep.find('.bt-numerical-order').css('background-color',bg_text);
+            $secondVideoStep.find('.bt-numerical-order').css('color',color_text);
+            $secondVideoStep.find('.bt-numerical-order').css('font-weight','bold');
+            $secondVideoStep.find('.bt-title').css('color',color_text);
+            $secondVideoStep.find('.bt-title').css('font-weight','bold');
+  
+            //Video
+            $secondVideo.find('.bt-step').css('background-color',$setting_second_video.menu.background_color);
+            $secondVideo.find('.bt-step').css('color',$setting_second_video.menu.text_color);
+  
+            // secondVideo
+  
+            $secondVideo.find('.bt-comeback').removeClass('hidden')
+
+            $.each( $('#bt-sync1').find('video') , function (index, value ) {
+                value.pause();
+            } );
+      
+            $.each( $secondVideo.find('video') , function (index, value ) {
+                value.pause();
+            } );
+        });
+    }
+    
+}
+
   $(window).on('resize', function () {
     RenderMetaHeader()
     RenderVideo()
@@ -457,9 +582,11 @@ jQuery(function ($) {
   });
 
   $(document).ready(function () {
-    VideoTemplate()
+    HanldeHeader()
     RenderMetaHeader()
     RenderVideo()
     RunCarouselInner()
+    TotoBusVideo()
+    SecondVideo()
   });
 });
