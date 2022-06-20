@@ -11,7 +11,7 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
 
 ?>
 <div>
-<div id="bt-sync1" class="bt-carousel-tpldv owl-carousel owl-theme">
+<div id="bt-parents-video" class="bt-carousel-tpldv owl-carousel owl-theme">
     <?php
     $i = 0;
     foreach( $video_steps as $items ): ?>
@@ -34,17 +34,17 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
                 </div>
                 <?php if($items['item_step_video']){
                     $item_steps = $items['item_step_video']; ?>
-                    <div class="bt-items-page">
+                    <div class="bt-items-page __navs-videos">
                         <?php if($items['photos_step_vd']){ ?>
-                            <h2 class="bt-photos-step bt-title"> Photos </h2>
+                            <h2 class="bt-photos-step bt-title __step-inner" data-page="gallery"> Photos </h2>
                         <?php } ?>
                         <?php if($items['dessins_step_vd']){ ?>
-                            <h2 class="bt-dessins-step bt-title"> Dessins </h2>
+                            <h2 class="bt-dessins-step bt-title __step-inner" data-page="dessins"> Dessins </h2>
                         <?php } ?>
 
                         <?php foreach( $item_steps as $steps ): ?>
                             <?php $slugItem = sanitize_title($steps['name_item_step_video']); ?>
-                            <h2 class="bt-step bt-title bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                            <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
                                 <?php if($steps['link_item_step_video']){ ?>
                                         <a href="<?php echo $steps['link_item_step_video'] ?>"> <?php echo $steps['name_item_step_video'] ?> </a>
                                 <?php }else { ?>
@@ -54,20 +54,20 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
                         <?php endforeach; ?>
 
                     </div>
-                    <div class="bt-item-page-mobile">
+                    <div class="bt-item-page-mobile __navs-videos">
                         <div class="bt-btn-toggle">
                             <span class="toggole-menu-mobile"> </span>
                         </div>
                         <ul class="bt-menu-mobile menu-step" style="display:none;">
                             <?php if($items['photos_step_vd']){ ?>
-                                <li class="bt-photos-step item"> Photos </li>
+                                <li class="bt-photos-step item __step-inner" data-page="gallery"> Photos </li>
                             <?php } ?>
                             <?php if($items['dessins_step_vd']){ ?>
-                                <li class="bt-dessins-step item"> Dessins </li>
+                                <li class="bt-dessins-step item __step-inner" data-page="dessins"> Dessins </li>
                             <?php } ?>
                             <?php foreach( $item_steps as $steps ): ?>
                                 <?php $slugItem = sanitize_title($steps['name_item_step_video']); ?>
-                                <li class="step item bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                                <li class="step item __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
                                     <?php if($steps['link_item_step_video']){ ?>
                                             <a href="<?php echo $steps['link_item_step_video'] ?>"> <?php echo $steps['name_item_step_video'] ?> </a>
                                     <?php }else { ?>

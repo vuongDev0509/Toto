@@ -150,7 +150,7 @@ jQuery(function ($) {
 
         let $id = $data.attr('id')
         let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
-       // console.log($id)
+       
         $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
         $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
         if($vdActive){
@@ -232,19 +232,6 @@ jQuery(function ($) {
             }, 1200 )
           } );
         });
-      }
-
-      function __updateTemplate(){
-        // if($('#page_2').hasClass('hidden') && $('#page_3').hasClass('hidden')){
-        //     $mainSite.removeClass("scroll");
-        //     $ctaToggleNav.removeClass('active');
-        //     $itemsMobile.find('.bt-menu-mobile').removeClass('active')
-        //                                         .slideUp("swing")
-        //     $mainSite.find('.bt-section').removeClass('hidden')
-        //                                  .removeClass('active')     
-        //     $stepPhoto.removeClass('active')
-        //     $stepDessins.removeClass('active')                                                                                   
-        // }
       }
   
       function __runCarousel($itemParents, $itemChildrens) {
@@ -354,12 +341,12 @@ jQuery(function ($) {
             var duration = 300;
             var itemIndex =  $(e.target).parents($itemCarousel).index();
             $itemParents.trigger('to.owl.carousel',[itemIndex, duration, true]);
-            __updateTemplate()
+           
         }).on("changed.owl.carousel", function (el) {
             var number = el.item.index;
             var $owl_slider = $itemParents.data('owl.carousel');
             $owl_slider.to(number, 100, true);
-            __updateTemplate()
+           
         });
   
         __childrenOnchange($itemChildrens)
@@ -450,8 +437,8 @@ jQuery(function ($) {
 
     const $tplVideo      = $('.page-template-template-video')
     const $ctaShow       = $tplVideo.find('#page_2 .heading.be_timelines_toto_bus');
-    const $itemParents   = $tplVideo.find('#bt-sync1');
-    const $itemChildrens = $tplVideo.find('#bt-sync2');
+    const $itemParents   = $tplVideo.find('#bt-parents-video');
+    const $itemChildrens = $tplVideo.find('#bt-childrens-video');
     const $mainSite      = $tplVideo.find('.site-main');
     const $totoBus       = $mainSite.find('.bt-section-tpl-vd');
     const $footer        = $tplVideo.find('.site-footer');
@@ -569,8 +556,32 @@ jQuery(function ($) {
             } );
         });
     }
-    
-}
+  }
+
+  const TimelinesTemplate = () =>{
+    const $tplVideo      = $('.page-template-template-video');
+    const $ssTimelines   = $tplVideo.find('#page_2');
+    const $itemTimelines = $ssTimelines.find('.bt_list_item_header_video .heading')
+    const $footer        = $tplVideo.find('.site-footer');
+
+    __showTimelinesCarousel()
+
+    function __showTimelinesCarousel(){
+      $itemTimelines.click(function(){
+        let $dataTimeline = $(this).data('timelines');
+
+        if ($dataTimeline != "" && $dataTimeline != undefined) {
+         
+          let $idParents     = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
+          let $idChildrens   = $(`.site-footer .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
+          let $itemParents   = $(`#${$idParents}`)
+          let $itemChildrens = $(`#${$idChildrens}`)
+
+          VideoTemplate($itemParents, $itemChildrens)
+        }
+      });
+    }
+  }
 
   $(window).on('resize', function () {
     RenderMetaHeader()
@@ -588,5 +599,6 @@ jQuery(function ($) {
     RunCarouselInner()
     TotoBusVideo()
     SecondVideo()
+    TimelinesTemplate()
   });
 });

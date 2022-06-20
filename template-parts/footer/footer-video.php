@@ -14,7 +14,7 @@ $tpl_vd = get_fields();
                     <img src="<?php echo $tpl_vd['icon_spacing']; ?>" alt="icon" />
                 </div>
             <?php } ?>
-            <div id="bt-sync2" class="bt-carousel-tpldv owl-carousel owl-theme">
+            <div id="bt-childrens-video" class="bt-carousel-tpldv owl-carousel owl-theme">
                 <?php $video_steps = $tpl_vd['video_step'];
                 $i = 0;
                 if($video_steps):
@@ -25,7 +25,7 @@ $tpl_vd = get_fields();
                         <div class="bt-item-vd item" data-index="<?php echo $index; ?>">
                             <?php if($tpl_vd['icon_smiley_tplvd']){ ?>
                                 <div class="bt-smiley">
-                                    <img src="<?php echo $tpl_vd['icon_smiley_tplvd']; ?>" alt="icon-smiley"/>
+                                    <img src="<?php echo $tpl_vd['icon_smiley_tplvd']; ?>" alt="icon-smiley"/ data-section="smiley">
                                 </div>
                             <?php } ?>
                         </div>

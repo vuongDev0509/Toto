@@ -34,19 +34,19 @@ body{
         display: none;
     }
 }
-.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-sync1.bt-carousel-tpldv .owl-item .bt-item-vd .bt-logo-warper{
+.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-parents-video.bt-carousel-tpldv .owl-item .bt-item-vd .bt-logo-warper{
     top: 65px;
 }
-// .admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-sync1.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd>img{
+// .admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-parents-video.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd>img{
 //     top: 120px;
 // }
-.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-sync1.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd>.bt-sub-title{
+.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-parents-video.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd>.bt-sub-title{
     top: 46px;
 }
-.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-sync1.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-meta .bt-item-page-mobile .bt-btn-toggle{
+.admin-bar .bt-section.bt-section-tpl-vd .bt-body-tpl-vd #bt-parents-video.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-meta .bt-item-page-mobile .bt-btn-toggle{
     top: 57px;
 }
-.admin-bar.page-template-template-video .bt-section.bt-section-tpl-vd #bt-sync1.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd p.bt-description-vd{
+.admin-bar.page-template-template-video .bt-section.bt-section-tpl-vd #bt-parents-video.bt-carousel-tpldv .owl-item.active .bt-item-vd .bt-image-sub-vd p.bt-description-vd{
     top: 85px;
 }
 .admin-bar.page-template-template-video .bt-header-main{
@@ -265,7 +265,7 @@ body{
                 left: -100%;
                 opacity: 0;
             }
-            #bt-sync1.bt-carousel-tpldv,#toto-second-videos.bt-carousel-tpldv, .be-carousel-timelines-main.bt-carousel-tpldv{
+            #bt-parents-video.bt-carousel-tpldv,#toto-second-videos.bt-carousel-tpldv, .be-carousel-timelines-main.bt-carousel-tpldv{
                 .owl-item {
                     min-height: 200px;
                     &.first-child{

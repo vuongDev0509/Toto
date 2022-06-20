@@ -1,12 +1,6 @@
 ;( function( w, $ ) {
     'use strict';
 
-  function loadWidthMaps(){
-    const isMaps = $('.page_2 .bt_image_maps');
-    const isImageMaps =  $('.page_2 .bt_image_maps img');
-    let widthImage = isImageMaps.width();
-    isMaps.css("width", widthImage);
-  }
 
   function show_name_project_toto() {
     $('body').on('click','.next-step-project-1',function(e){
@@ -25,57 +19,42 @@
     })
   }
 
-  function loadPage3(){
+  // function playTemplateVideo(){
+  //   let isIconPlay = $('.page-template-template-video #page_3 .icon-play');
+  //   let isTplvd    = $('.page-template-template-video');
+  //   let isBtnPlay  = $('.page-template-template-video .bt-icon-play');
+  //   let isPage3    = $('.page-template-template-video #page_3');
+  //   const isLogo   = $('.bt-header-main .bt-logo');
+  //   const isFooter = $('.page-template-template-video .site-footer');
 
-    const isPage2 = $('.page-template-template-video #page_2');
-    const isPage3 = $('.page-template-template-video #page_3');
-    const isLogo = $('.page-template-template-video .bt-header-main .bt-logo');
+  //   isIconPlay.click(function(){
 
-    jQuery(document).on( 'click', '.bt-logo-site.next-step-3', function(){
-      isLogo.addClass('hidden');
-      isPage3.removeClass('hidden');
-      isPage2.addClass('hidden');
-      isPage3.addClass('active');
-    });
+  //     isTplvd.addClass('active');
+  //     isPage3.removeClass('active');
+  //     isPage3.addClass('hidden');
+  //     isFooter.addClass('active');
+  //     isLogo.removeClass('hidden');
+  //     isLogo.addClass('step-video');
+  //     $('.page-template-template-video .bt-header-main .bt-logo-site').removeClass('next-step-3');
 
-  }
+  //     var myVideo = document.querySelector(".page-template-template-video.active .owl-item.active .video-js");
+  //     var owl = jQuery('.owl-carousel');
 
-  function playTemplateVideo(){
-    let isIconPlay = $('.page-template-template-video #page_3 .icon-play');
-    let isTplvd    = $('.page-template-template-video');
-    let isBtnPlay  = $('.page-template-template-video .bt-icon-play');
-    let isPage3    = $('.page-template-template-video #page_3');
-    const isLogo   = $('.bt-header-main .bt-logo');
-    const isFooter = $('.page-template-template-video .site-footer');
-
-    isIconPlay.click(function(){
-
-      isTplvd.addClass('active');
-      isPage3.removeClass('active');
-      isPage3.addClass('hidden');
-      isFooter.addClass('active');
-      isLogo.removeClass('hidden');
-      isLogo.addClass('step-video');
-      $('.page-template-template-video .bt-header-main .bt-logo-site').removeClass('next-step-3');
-
-      var myVideo = document.querySelector(".page-template-template-video.active .owl-item.active .video-js");
-      var owl = jQuery('.owl-carousel');
-
-      if (myVideo.paused){
-          myVideo.play();
-          myVideo.onended = function() {
-              owl.trigger('next.owl.carousel');
-          };
-          jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').removeClass('paused');
-          isBtnPlay.removeClass('play');
-      }
-      else{
-          myVideo.pause();
-          jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
-          isBtnPlay.addClass('play');
-      }
-    })
-  }
+  //     if (myVideo.paused){
+  //         myVideo.play();
+  //         myVideo.onended = function() {
+  //             owl.trigger('next.owl.carousel');
+  //         };
+  //         jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').removeClass('paused');
+  //         isBtnPlay.removeClass('play');
+  //     }
+  //     else{
+  //         myVideo.pause();
+  //         jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
+  //         isBtnPlay.addClass('play');
+  //     }
+  //   })
+  // }
 
 
   function loadTimelines(){
@@ -109,7 +88,7 @@
         let idChildrens = $(`.site-footer .bt-carousel-tpldv.${dataTimeline}`).attr('id');
 
         // call funtion load carousel timelines
-        loadTempalteTimelines(idParents, idChildrens)
+       // loadTempalteTimelines(idParents, idChildrens)
 
         // call funtion first video play when load timelines
 
@@ -525,7 +504,7 @@
   $( document ).ready(function() {
     //loadPage3();
     back_map_all_step1();
-    playTemplateVideo();
+    //();
     loadTimelines();
     loadTimelinesTotoBus();
     mapsToTimelines();
