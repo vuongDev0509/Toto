@@ -16,7 +16,6 @@
     wp_enqueue_style( 'toto-owl-carousel-min', get_stylesheet_directory_uri() . '/assets/css/Owl-Carousel/owl.carousel.min.css', array() );
     wp_enqueue_style( 'toto-fonts-nunito', get_stylesheet_directory_uri() . '/assets/fonts/Nunito/stylesheet.css', array() );
 
-
     wp_enqueue_script( 'toto-functions', get_stylesheet_directory_uri() . '/assets/js/functions.js',array( 'jquery' ), '1.0.2', true);
     wp_enqueue_script( 'toto-custom-theme', get_stylesheet_directory_uri() . '/assets/js/custom-themes.js',array( 'jquery' ), '1.0.1', true);
     wp_enqueue_script( 'toto-custom-ajax', get_stylesheet_directory_uri() . '/assets/js/custom-ajax.js',array( 'jquery' ), '1.0.1', true);
@@ -54,14 +53,14 @@ require_once get_stylesheet_directory() ."/vendor/autoload.php";
 use ScssPhp\ScssPhp\Compiler;
 function toto_scss_to_css_compile() {
 
-	// if ( ! WP_DEBUG ) {
-	// 	return true;
-	// }
-    $scss_path = get_stylesheet_directory() . '/assets/css/';
-    $scss      = new Compiler();
-    $scss->setImportPaths( $scss_path );
-    $scss->setFormatter( 'ScssPhp\ScssPhp\Formatter\Compressed' );
-    $toto_scss_content = file_get_contents( $scss_path . 'toto-main.scss' );
-    file_put_contents( $scss_path . 'toto-main.css', $scss->compile( $toto_scss_content));
+	if ( ! WP_DEBUG ) {
+		return true;
+	}
+  $scss_path = get_stylesheet_directory() . '/assets/css/';
+  $scss      = new Compiler();
+  $scss->setImportPaths( $scss_path );
+  $scss->setFormatter( 'ScssPhp\ScssPhp\Formatter\Compressed' );
+  $toto_scss_content = file_get_contents( $scss_path . 'toto-main.scss' );
+  file_put_contents( $scss_path . 'toto-main.css', $scss->compile( $toto_scss_content));
 }
 add_action( 'init', 'toto_scss_to_css_compile' );
