@@ -19,44 +19,6 @@
     })
   }
 
-  // function playTemplateVideo(){
-  //   let isIconPlay = $('.page-template-template-video #page_3 .icon-play');
-  //   let isTplvd    = $('.page-template-template-video');
-  //   let isBtnPlay  = $('.page-template-template-video .bt-icon-play');
-  //   let isPage3    = $('.page-template-template-video #page_3');
-  //   const isLogo   = $('.bt-header-main .bt-logo');
-  //   const isFooter = $('.page-template-template-video .site-footer');
-
-  //   isIconPlay.click(function(){
-
-  //     isTplvd.addClass('active');
-  //     isPage3.removeClass('active');
-  //     isPage3.addClass('hidden');
-  //     isFooter.addClass('active');
-  //     isLogo.removeClass('hidden');
-  //     isLogo.addClass('step-video');
-  //     $('.page-template-template-video .bt-header-main .bt-logo-site').removeClass('next-step-3');
-
-  //     var myVideo = document.querySelector(".page-template-template-video.active .owl-item.active .video-js");
-  //     var owl = jQuery('.owl-carousel');
-
-  //     if (myVideo.paused){
-  //         myVideo.play();
-  //         myVideo.onended = function() {
-  //             owl.trigger('next.owl.carousel');
-  //         };
-  //         jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').removeClass('paused');
-  //         isBtnPlay.removeClass('play');
-  //     }
-  //     else{
-  //         myVideo.pause();
-  //         jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
-  //         isBtnPlay.addClass('play');
-  //     }
-  //   })
-  // }
-
-
   function loadTimelines(){
     let isBtnPlay         = $('.bt-icon-play');
     let btnStopVdMobile   = $('.be-carousel-timelines-main .bt-item-page-mobile .bt-menu-mobile .item');
