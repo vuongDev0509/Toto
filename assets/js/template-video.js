@@ -19,79 +19,6 @@
     })
   }
 
-  function loadTimelines(){
-    let isBtnPlay         = $('.bt-icon-play');
-    let btnStopVdMobile   = $('.be-carousel-timelines-main .bt-item-page-mobile .bt-menu-mobile .item');
-    const btnShowtimeline = $('.page_2 .bt_list_item_header_video .heading');
-    const listTtimeline   = $('.bt-section-tpl-vd .bt-carousel-tpldv');
-    const allSection      = $('.page-template-template-video .site-main .bt-section');
-    const footerCarousel  = $('.page-template-template-video .site-footer')
-
-    // show timeline carousel
-    btnShowtimeline.click(function(){
-
-      let dataTimeline = $(this).data('timelines');
-
-
-      if (dataTimeline != "" && dataTimeline != undefined) {
-
-      //   allSection.removeClass('active');
-      //   allSection.addClass('hidden');
-      //   footerCarousel.addClass('active');
-      //   $('.page-template-template-video .bt-section-tpl-vd').removeClass('hidden');
-      //   $('.page-template-template-video .bt-section-tpl-vd').addClass('active');
-      //   footerCarousel.find('.bt-carousel-tpldv').hide();
-      //   footerCarousel.find(`.bt-carousel-tpldv.${dataTimeline}`).show();
-      //   listTtimeline.hide();
-      //   $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).show();
-
-      //   // load carousel
-      //   let idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataTimeline}`).attr('id');
-      //   let idChildrens = $(`.site-footer .bt-carousel-tpldv.${dataTimeline}`).attr('id');
-
-      //   // call funtion load carousel timelines
-      //  // loadTempalteTimelines(idParents, idChildrens)
-
-      //   // call funtion first video play when load timelines
-
-      //   $('.be_timelines_item_3 .active.current').trigger('click')
-      //   $('.be_timelines_item_1 .active.current').trigger('click')
-      //   setTimeout( () => {
-      //     playVideo(idParents);
-      //   }, 1000 )
-
-      }
-
-    });
-
-    // start icon play video in timelines
-    // isBtnPlay.click(function(ev){
-    //     let idTimelines = $(this).parents('.be-carousel-timelines-main').attr('id');
-    //     let myVideo     = document.querySelector(`#${idTimelines}.be-carousel-timelines-main .owl-item.active .video-js`);
-
-    //     if (myVideo.paused){
-    //         $(this).children('.icon-play-vd').removeClass('paused');
-    //         $(this).removeClass('play');
-    //         myVideo.play();
-    //     }
-    //     else{
-    //       $(this).children('.icon-play-vd').addClass('paused');
-    //       $(this).addClass('play');
-    //       myVideo.pause();
-    //     }
-    // });
-
-    // // stop all videos ver mobile
-    // btnStopVdMobile.click(function(ett){
-    //     jQuery('.be-carousel-timelines-main .owl-item.active .bt-icon-play > .icon-play-vd').addClass('paused')
-    //     isBtnPlay.addClass('play');
-    //     $.each( '.be-carousel-timelines-main video', function (index, value ) {
-    //         value.pause();
-    //     } )
-    // });
-
-  }
-
   function timelinesNavigation() {
       let isTimelines = $('.be-carousel-timelines-main');
       let tplVideo    = $('.page-template-template-video');
@@ -362,15 +289,7 @@
 
   }
 
-  function loadTimelinesTotoBus(){
-    let btnTotoBus = $('#page_2 .heading.be_timelines_toto_bus');
 
-    // btnTotoBus.click(function(){
-    //   //showTimelinesTotoBus();
-    //   let data = "bt-sync1";
-    //   playVideo(data);
-    // });
-  }
 
   function mapsToTimelines(){
     let itemMaps = $('.page_2 .bt_image_maps .item-location');
@@ -467,13 +386,13 @@
     //loadPage3();
     back_map_all_step1();
     //();
-    loadTimelines();
-    loadTimelinesTotoBus();
+    // loadTimelines();
+    // loadTimelinesTotoBus();
     mapsToTimelines();
     switchTotoBus();
     comebackTimelinesMaps();
     show_name_project_toto();
-    timelinesNavigation();
+    //timelinesNavigation();
   });
 
 

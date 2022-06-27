@@ -66,7 +66,9 @@ jQuery(function ($) {
 
     // event for icon play video when click
     function __handleIconPlay($data){
+        console.log("__handleIconPlay")
         $ctaPlay.find('.icon-play-vd').click(function(){
+          console.log("aaa")
             let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
 
             if ($vdActive.paused){
@@ -96,10 +98,11 @@ jQuery(function ($) {
     }
 
     function __redirectStepVd($data){
+      console.log($data)
       $mainSite.find('.bt-section').addClass('hidden')
                                   .removeClass('active')
-      $mainSite.find(`.bt-section-${$data}`).addClass('active')
-                                  .removeClass('hidden')  
+      $mainSite.find(`.bt-section.${$data}`).addClass('active')
+                                  .removeClass('hidden')                       
     }
 
     function __backHomepage(){
@@ -147,6 +150,7 @@ jQuery(function ($) {
     function __startVdTemplate($data){
         __renderVdTemplate()
         __showAllVideo()  
+        __stopAllVideo()
 
         let $id = $data.attr('id')
         let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
@@ -564,8 +568,59 @@ jQuery(function ($) {
     const $mainSite      = $tplVideo.find('.site-main');
     const $itemTimelines = $ssTimelines.find('.bt_list_item_header_video .heading')
     const $footer        = $tplVideo.find('.site-footer');
+    const $isNavigation  = $('.be_timelines_navigation');
+    const $ctaNavi       = $isNavigation.find('.be_timelines_navigation__item span');
+    const $ctaTotoBus    = $isNavigation.find('.bt-back')
 
     __showTimelinesCarousel()
+    __timelinesNavigation()
+
+    function __timelinesNavigation(){
+      $ctaNavi.on('click',function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        let $dataTimlines = $(this).data('timeline');
+  
+        if ($dataTimlines == 'be_timelines_item_0') {
+          __showTimelinesTotoBus()
+        }else{
+          if ($dataTimlines.length <= 0) return;
+          __checkTimlines($dataTimlines);
+        }
+      });
+    }
+
+    function __activeCarousel(){
+      $mainSite.find('.bt-section').removeClass('active');
+      $mainSite.find('.bt-section').addClass('hidden');
+      $mainSite.find('.bt-section-tpl-vd').removeClass('hidden');
+      $mainSite.find('.bt-section-tpl-vd').addClass('active');
+      $mainSite.find('.bt-section-tpl-vd .bt-carousel-tpldv').hide();
+      
+      $footer.addClass('active');
+      $footer.find('.bt-carousel-tpldv').hide();
+    }
+
+    function __checkTimlines(data){
+      __activeCarousel()
+      $footer.find(`.bt-carousel-tpldv.${data}`).show();  
+      $mainSite.find(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).show();
+
+      //load carousel
+      let $idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).attr('id');
+      let $idChildrens = $(`.site-footer .bt-carousel-tpldv.${data}`).attr('id');  
+      VideoTemplate($(`#${$idParents}`), $(`#${$idChildrens}`))
+
+    }
+
+    function __showTimelinesTotoBus(){
+      const $itemParents = $('#bt-parents-video')
+      const $itemChildrens = $('#bt-childrens-video')
+      __activeCarousel()
+      $itemChildrens.show();
+      $itemParents.show();
+      VideoTemplate($itemParents, $itemChildrens)
+    }
 
     function __showTimelinesCarousel(){
       $itemTimelines.click(function(){
