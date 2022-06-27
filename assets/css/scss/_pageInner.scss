@@ -5,13 +5,19 @@
     }
 }
 .admin-bar{
-    .bt-section.active .bt-comeback>img, .bt-section .bt-item-details.active .bt-comeback>img{
-        bottom:145px;
+    .bt-section.active > .bt-comeback>img, .bt-section .bt-item-details.active .bt-comeback>img{
+        bottom:170px;
+        opacity: 1;
+        z-index: 9999;
     }
     .bt-section .bt-comeback>img{
         @media only screen and (max-width: 767px){
             top: 55px;
         }
+    }
+
+    .bt-section .bt-item-details.active .bt-comeback>img{
+        
     }
 }
 .page-template-template-video{
@@ -59,7 +65,7 @@
             }
         }
     }
-    &.active, .bt-item-details.active{
+    .bt-item-details.active{
         .bt-comeback{
             > img{
                 opacity: 1;
@@ -202,6 +208,7 @@
         right: -100%;
         z-index: 999;
         transition: all 1000ms ease-in-out;
+        background-color: #fff;
         &.active{
             right: 0;
         }

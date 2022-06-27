@@ -19,293 +19,7 @@
     })
   }
 
-  function timelinesNavigation() {
-      let isTimelines = $('.be-carousel-timelines-main');
-      let tplVideo    = $('.page-template-template-video');
 
-      let isBtnPlay         = $('.bt-icon-play');
-      let btnStopVdMobile   = isTimelines.find('.bt-item-page-mobile .bt-menu-mobile .item');
-      const btnShowtimeline = $('.page_2 .bt_list_item_header_video .heading');
-      const listTtimeline   = $('.bt-section-tpl-vd .bt-carousel-tpldv');
-      const allSection      = tplVideo.find('.site-main .bt-section');
-      const footerCarousel  = tplVideo.find('.site-footer');
-
-      let isNavigation = $('.be_timelines_navigation');
-      let ctaNavi      = isNavigation.find('.be_timelines_navigation__item span');
-      const ctaTotoBus = isNavigation.find('.bt-back');
-
-      ctaTotoBus.click(function(){
-        __renderPage2()
-      })
-
-      if (isNavigation.length <= 0) return;
-
-      ctaNavi.click(function(){
-        let dataTimlines = $(this).data('timeline');
-
-        if (dataTimlines == 'be_timelines_item_0') {
-          showTimelinesTotoBus();
-          let data = "bt-sync1";
-          playVideo(data);
-        }else {
-          if (dataTimlines.length <= 0) return;
-          __checkTimlines(dataTimlines);
-        }
-      });
-
-      function __renderPage2(){
-        const isTotoBus = tplVideo.find('#page_2');
-        allSection.removeClass('active');
-        allSection.addClass('hidden');
-
-        isTotoBus.removeClass('hidden');
-        isTotoBus.addClass('active');
-        footerCarousel.addClass('vvv')
-        footerCarousel.removeClass('active');
-        footerCarousel.find('.bt-section').removeClass('bt-section-content-footer')
-      }
-
-      function __checkTimlines(data) {
-
-        $.each( allSection.find('video') , function (index, value ) {
-            value.pause();
-        } );
-        allSection.removeClass('active');
-        allSection.addClass('hidden');
-        footerCarousel.addClass('active');
-        $('.page-template-template-video .bt-section-tpl-vd').removeClass('hidden');
-        $('.page-template-template-video .bt-section-tpl-vd').addClass('active');
-        footerCarousel.find('.bt-carousel-tpldv').hide();
-        footerCarousel.find(`.bt-carousel-tpldv.${data}`).show();
-        listTtimeline.hide();
-        $(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).show();
-
-        //load carousel
-        let idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).attr('id');
-        let idChildrens = $(`.site-footer .bt-carousel-tpldv.${data}`).attr('id');
-
-        // call funtion load carousel timelines
-        loadTempalteTimelines(idParents, idChildrens)
-
-        let ssActive = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`);
-        $.each( ssActive.find('.owl-item.active video') , function (index, value ) {
-            value.play();
-        } );
-      }
-  }
-
-  // load carousel timelines
-  function loadTempalteTimelines(idParents, idChildrens) {
-
-    const isMenuMobile    = $('.page-template-template-video .bt-item-page-mobile .bt-menu-mobile');
-    let isBtnPlay         = $('.bt-icon-play');
-    let carouselParents   = $(`#${idParents}`);
-    let carouselChildrens = $(`#${idChildrens}`);
-    let itemOwl           = '.owl-item';
-    let __i               = 1;
-    let totalItemParents  = carouselParents.find('.bt-item-vd').length;
-    var videos            = carouselParents.find('video');
-    let dataOwlCarousel;
-
-    var timelinesParents = carouselParents.owlCarousel({
-      // video:true,
-      startPosition: 11,
-      items:1,
-      loop:false,
-      margin:0,
-      autoplay:false,
-      autoplayTimeout:6000,
-      autoplayHoverPause:false,
-      nav: false,
-      dots: true
-    }).on('changed.owl.carousel', onHandleParents);
-
-    function onHandleParents(el) {
-
-        dataOwlCarousel = $(this).data('owl.carousel');
-        var loop = dataOwlCarousel.options.loop;
-        if(loop){
-            var count = el.item.count-1;
-            var current = Math.round(el.item.index - (el.item.count/2) - .5);
-            if(current < 0) {
-                current = count;
-            }
-            if(current > count) {
-                current = 0;
-            }
-        }else{
-            var current = el.item.index;
-        }
-        var owl_thumbnail = carouselChildrens.data('owl.carousel');
-        var itemClass = "." + owl_thumbnail.options.itemClass;
-        var thumbnailCurrentItem = carouselChildrens
-        .find(itemClass)
-        .removeClass("current")
-        .eq(current);
-
-        thumbnailCurrentItem.addClass('current');
-        if (!thumbnailCurrentItem.hasClass('active')) {
-            var duration = 300;
-            carouselChildrens.trigger('to.owl.carousel',[current, duration, true]);
-            __i = current;
-        }
-
-        var cVideo = document.querySelector(`.page-template-template-video #${idParents} .owl-item.active .video-js`);
-        if (cVideo.paused){
-            jQuery(`#${idParents} .owl-item .bt-item-vd .bt-meta>.bt-icon-play .icon-play-vd`).removeClass('paused');
-            isBtnPlay.removeClass('play');
-        }
-
-    }
-
-    var timelinesChilrens = carouselChildrens.owlCarousel({
-        startPosition: 11,
-        items:11,
-        loop:false,
-        margin:10,
-        autoplay:false,
-        nav: false,
-        dots: false,
-        mouseDrag:false,
-        touchDrag: false,
-        // checkVisible:false,
-        responsive:{
-            0:{
-                items:2,
-                nav:true
-            },
-            640:{
-                items:3,
-                nav:true
-            },
-            768:{
-                items:4,
-                nav:true
-            },
-            992:{
-               items:5,
-               nav:true
-            },
-            1280:{
-                items: 7,
-                nav:true,
-                margin: 10,
-            },
-            1440:{
-                items:11,
-                nav:false,
-                margin:0
-            },
-            1800:{
-                margin:10
-            }
-        },
-        onInitialized: function (e) {
-            var thumbnailCurrentItem =  $(e.target).find(itemOwl).eq(this._current);
-            thumbnailCurrentItem.addClass('current');
-        },
-    })
-    .on('click', itemOwl, function(e) {
-        e.preventDefault();
-        var duration = 300;
-        var itemIndex =  $(e.target).parents(itemOwl).index();
-        carouselParents.trigger('to.owl.carousel',[itemIndex, duration, true]);
-        __i = itemIndex+1;
-    }).on("changed.owl.carousel", function (el) {
-        var number = el.item.index;
-        dataOwlCarousel = carouselParents.data('owl.carousel');
-        dataOwlCarousel.to(number, 100, true);
-        __i = number+1;
-    });
-
-
-    carouselChildrens.on('changed.owl.carousel', function(eventt) {
-
-
-        setTimeout( () => {
-            let positionOwlCurrent4 =  jQuery(`#${idChildrens}.bt-carousel-tpldv .owl-item.current`).offset();
-
-            jQuery(".bt-icon-spacing>img").css({
-                "left": positionOwlCurrent4.left
-            }).fadeIn(500)
-        }, 1000 )
-
-        let isBtnPlay = jQuery('.page-template-template-video .bt-meta .bt-icon-play');
-
-        isBtnPlay.removeClass('play');
-
-    });
-
-    carouselParents.on('changed.owl.carousel', function(event) {
-        let positionOwlCurrent2 =  jQuery(`.bt-carousel-tpldv#${idChildrens} .owl-item.current`).offset();
-        let isBtnPlay = jQuery('.page-template-template-video .bt-meta .bt-icon-play');
-
-        isBtnPlay.removeClass('play');
-        jQuery(".bt-icon-spacing>img").css({
-            "left": positionOwlCurrent2.left
-        }).fadeIn(500);
-
-        $.each( videos, function () {
-            const v = $( this )
-
-            setTimeout( () => {
-                const isActive = v.parents( '.owl-item.active' ).length
-                var owl = jQuery('.owl-carousel');
-
-                if( isActive ) {
-                    // Play
-
-                    this.play()
-                    this.onended = function() {
-                        owl.trigger('next.owl.carousel');
-                    };
-                } else {
-                    // Stop
-                    this.pause()
-                }
-            }, 1000 )
-
-        } );
-
-      carouselParents.on('resized.owl.carousel', function(event) {
-          $.each( videos, function () {
-              const v = $( this )
-
-              setTimeout( () => {
-                  const isActive = v.parents( '.owl-item.active' ).length
-                  var owl = jQuery('.owl-carousel');
-
-                  if( isActive ) {
-                      this.pause()
-                      jQuery('.page-template-template-video .bt-meta .bt-icon-play > .icon-play-vd').addClass('paused');
-                      isBtnPlay.addClass('play');
-                  }
-              }, 1200 )
-
-          } );
-      });
-
-    });
-
-  }
-
-
-
-  function mapsToTimelines(){
-    let itemMaps = $('.page_2 .bt_image_maps .item-location');
-    const isTimelinesTotoBus = $('#bt-sync1');
-    itemMaps.click(function(){
-      let dataPosition = $(this).data('position');
-      var duration = 300;
-
-      showTimelinesTotoBus();
-      setTimeout( () => {
-          isTimelinesTotoBus.trigger('to.owl.carousel',[dataPosition, duration, true]);
-      }, 1200 )
-
-
-    });
-  }
 
   function showTimelinesTotoBus(){
     let parentsTimelines  = $('.site-main .bt-section-tpl-vd');
@@ -318,19 +32,11 @@
 
     footerCarousel.addClass('active');
     footerCarousel.find('.bt-carousel-tpldv').hide();
-    footerCarousel.find('#bt-sync2').show();
+    footerCarousel.find('#bt-childrens-video').show();
 
     parentsTimelines.find('.bt-carousel-tpldv').hide();
-    parentsTimelines.find('#bt-sync1').show();
+    parentsTimelines.find('#bt-parents-video').show();
 
-  }
-
-  // first video play when load timelines
-  function playVideo(data){
-    let myVideo = document.querySelector(`#${data} .owl-item.active .video-js`);
-    // $(`#${data} .owl-item.active`).find('.bt-icon-play').removeClass('play');
-    // $(`#${data} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
-    // myVideo.play();
   }
 
   function switchTotoBus(){
@@ -363,12 +69,6 @@
           value.pause();
       } );
 
-      //$('#page .site-main #page_2').removeClass('hidden');
-      // mainTemplate.removeClass('scroll')
-      // mainTemplate.find('.bt-section').addClass('hidden');
-      // mainTemplate.find('.bt-section').removeClass('active');
-      // mainTemplate.find('#page_2').removeClass('hidden');
-      // mainTemplate.find('#page_2').addClass('active');
       isMenuMobile.slideUp("swing");
       isMenuMobile.find('bt-btn-toggle').removeClass('active');
       footerVideo.removeClass('active');
@@ -385,14 +85,9 @@
   $( document ).ready(function() {
     //loadPage3();
     back_map_all_step1();
-    //();
-    // loadTimelines();
-    // loadTimelinesTotoBus();
-    mapsToTimelines();
     switchTotoBus();
     comebackTimelinesMaps();
     show_name_project_toto();
-    //timelinesNavigation();
   });
 
 

@@ -24,13 +24,13 @@ $video_steps = $tpl_vd['items_second_videos'];
 
                 <?php if($items['menu']){
                     $item_menus = $items['menu']; ?>
-                    <div class="bt-items-page">
+                    <div class="bt-items-page __navs-videos">
                         <?php foreach( $item_menus as $menu ): ?>
                             <?php
                               $slugItem = sanitize_title($menu['item']);
                               $type_menu = sanitize_title($menu['type']);
                             ?>
-                            <h2 class="bt-step bt-title" data-page="bt-<?php echo $slugItem; ?>">
+                            <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
                                 <?php if($type_menu == 'url'){ ?>
                                         <a href="<?php echo $menu['url'] ?>"> <?php echo $menu['item'] ?> </a>
                                 <?php }else { ?>
@@ -40,7 +40,7 @@ $video_steps = $tpl_vd['items_second_videos'];
                         <?php endforeach; ?>
                     </div>
                 <?php } ?>
-                <div class="bt-item-page-mobile">
+                <div class="bt-item-page-mobile __navs-videos">
                     <div class="bt-btn-toggle">
                         <span class="toggole-menu-mobile"> </span>
                     </div>
@@ -50,7 +50,7 @@ $video_steps = $tpl_vd['items_second_videos'];
                               $slugItem = sanitize_title($menu['item']);
                               $type_menu = sanitize_title($menu['type']);
                             ?>
-                            <li class="step item bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                            <li class="step item __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
                                 <?php if($type_menu == 'url'){ ?>
                                         <a href="<?php echo $menu['url'] ?>"> <?php echo $menu['item'] ?> </a>
                                 <?php }else { ?>

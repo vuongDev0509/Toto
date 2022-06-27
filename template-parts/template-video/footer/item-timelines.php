@@ -6,6 +6,8 @@
 <?php foreach ($page2 as $key => $value):
   $timelines        = $value['items_timelines'];
   $settingTimelines = $value['setting_data_timelines'];
+  $background       = $value['background_color'] ? $value['background_color'] : "#539291" ;
+  $color            = $value['color'] ? $value['color'] : "#fff" ;
 
    if ($value['show_or_hidden_timelines']): ?>
     <div id="toto-steps-carousel-timelines-<?php echo $key ?>" class="be-carousel-timelines-steps bt-carousel-tpldv be_timelines_item_<?php echo $key ?> owl-carousel owl-theme">
@@ -18,11 +20,11 @@
                 <img src="<?php echo $items['image_layout']; ?>" alt=""/>
               </div>
             <?php }else{ ?>
-              <span class="bt-numerical-order">
+              <span class="bt-numerical-order" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>">
                 <?php  echo $items['num_step'] ?>
               </span>
 
-              <h3 class="bt-title">
+              <h3 class="bt-title" style="color:<?php echo $background ?>">
                 <?php echo $items['name']; ?>
               </h3>
             <?php } ?>

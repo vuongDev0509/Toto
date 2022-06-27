@@ -66,9 +66,8 @@ jQuery(function ($) {
 
     // event for icon play video when click
     function __handleIconPlay($data){
-        console.log("__handleIconPlay")
+        
         $ctaPlay.find('.icon-play-vd').click(function(){
-          console.log("aaa")
             let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
 
             if ($vdActive.paused){
@@ -98,7 +97,7 @@ jQuery(function ($) {
     }
 
     function __redirectStepVd($data){
-      console.log($data)
+     
       $mainSite.find('.bt-section').addClass('hidden')
                                   .removeClass('active')
       $mainSite.find(`.bt-section.${$data}`).addClass('active')
@@ -142,15 +141,16 @@ jQuery(function ($) {
     function __stopAllVideo(){
       $ctaPlay.addClass('play');
       $ctaPlay.find('.icon-play-vd').addClass('paused');
-      $.each( $allVideo, function (index, value ) {
+      let $Videos        = $mainSite.find('video');
+      $.each( $Videos, function (index, value ) {
           value.pause();
       } )
     }
 
     function __startVdTemplate($data){
         __renderVdTemplate()
-        __showAllVideo()  
         __stopAllVideo()
+        __showAllVideo()  
 
         let $id = $data.attr('id')
         let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
@@ -446,6 +446,7 @@ jQuery(function ($) {
     const $mainSite      = $tplVideo.find('.site-main');
     const $totoBus       = $mainSite.find('.bt-section-tpl-vd');
     const $footer        = $tplVideo.find('.site-footer');
+  
 
     $ctaShow.click(function(){
         VideoTemplate($itemParents, $itemChildrens)
@@ -477,7 +478,6 @@ jQuery(function ($) {
 
     __loadSsTimelines()
     __showItemHeader()
-    __comeBackHeaderMain()
     __handleMenuBar()
    
     function __loadSsTimelines(){
@@ -494,12 +494,6 @@ jQuery(function ($) {
             $itemHeader.removeClass('active');
             $(`.bt-section-header-tpldv .be_header_items_template.${dataTemplate}`).addClass('active');
         });
-    }
-
-    function __comeBackHeaderMain(){
-        $itemHeader.find('.bt-back').click(function(){
-            $itemHeader.removeClass('active')
-        })   
     }
 
     function __handleMenuBar(){
@@ -570,10 +564,41 @@ jQuery(function ($) {
     const $footer        = $tplVideo.find('.site-footer');
     const $isNavigation  = $('.be_timelines_navigation');
     const $ctaNavi       = $isNavigation.find('.be_timelines_navigation__item span');
+    const $itemMaps      = $ssTimelines.find('.bt_image_maps .item-location');
+    const $ctaComeback   = $('.be_timelines_navigation__item .bt-back')
     const $ctaTotoBus    = $isNavigation.find('.bt-back')
 
     __showTimelinesCarousel()
     __timelinesNavigation()
+
+    $ctaComeback.click(function(){
+      $mainSite.find('.bt-section').removeClass('active');
+      $mainSite.find('.bt-section').addClass('hidden');
+      $footer.removeClass('active')
+
+      $ssTimelines.addClass('active')
+      $ssTimelines.removeClass('hidden')
+
+      let $Videos = $mainSite.find('video');
+      $.each( $Videos, function (index, value ) {
+          value.pause();
+      } )
+    })
+
+    $itemMaps.click(function(){
+      let $idParents   = $('#bt-parents-video');
+      let $idChildrens = $('#bt-childrens-video');
+      let dataPosition = $(this).data('position');
+      var duration = 300;
+
+      __activeCarousel()  
+      VideoTemplate($idParents, $idChildrens)
+      $idChildrens.show()
+      $idParents.show()
+      setTimeout( () => {
+        $idParents.trigger('to.owl.carousel',[dataPosition, duration, true]);
+    }, 1200 )
+    });
 
     function __timelinesNavigation(){
       $ctaNavi.on('click',function(e){
@@ -632,18 +657,10 @@ jQuery(function ($) {
           let $idChildrens   = $(`.site-footer .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
           let $itemParents   = $(`#${$idParents}`)
           let $itemChildrens = $(`#${$idChildrens}`)
-
-          $mainSite.find('.bt-section').addClass('hidden')
-                                      .removeClass('active');
-          $mainSite.find('.bt-section-tpl-vd').addClass('active')
-                                              .removeClass('hidden');
-          $footer.removeClass('acitve')
-                 .find('.bt-carousel-tpldv').hide();
+          VideoTemplate($itemParents, $itemChildrens)
+          __activeCarousel()
           $itemParents.show()
           $itemChildrens.show()
-          $('.be_timelines_item_3 .active.current').trigger('click')
-          $('.be_timelines_item_1 .active.current').trigger('click')
-          VideoTemplate($itemParents, $itemChildrens)
         }
       });
     }
