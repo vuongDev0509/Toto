@@ -25,6 +25,13 @@ $countItem = count($page2);
     <div id="toto-main-carousel-timelines-<?php echo $key ?>" class="be-carousel-timelines-main bt-carousel-tpldv be_timelines_item_<?php echo $key ?> owl-carousel owl-theme">
 
       <?php foreach ($timelines as $key => $timeline): ?>
+
+        <?php 
+          $steps            = $timeline['setting_data_timelines']['steps'];
+          $background       = $steps['background'] ? $steps['background'] : "#cd681e" ;
+          $color            = $steps['color'] ? $steps['color'] : "#fff" ;  
+        ?>
+
         <div class="bt-item-vd item">
           <div class="bt-image-sub-vd aaaa items">
             <?php if($settingTimelines['icon_right_image']){ ?>
@@ -43,7 +50,7 @@ $countItem = count($page2);
                 <?php foreach( $item_menus as $menu ):
                   $slugItem = sanitize_title($menu['item']);
                   $type_menu = sanitize_title($menu['type']); ?>
-                  <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                  <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>">
                     <?php if($type_menu == 'url'){ ?>
                       <a href="<?php echo $menu['url'] ?>"> <?php echo $menu['item'] ?> </a>
                     <?php }else { ?>
