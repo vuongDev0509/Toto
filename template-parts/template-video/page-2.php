@@ -29,6 +29,18 @@ $list_item          = $tpl_vd['list_items_page_2_tplvd'];
                     </div>
                   </div>
 
+                  <div class="custom item-location item-location-11" data-position="11">
+                    <span class="dot" style="background-color:#e1a26f"></span>
+                    <div class="entry" style="background-color:#e1a26f">
+                    Am eisleck                    </div>
+                  </div>
+
+                  <div class="custom item-location item-location-12" data-position="12">
+                    <span class="dot" style="background-color:#e1a26f"></span>
+                    <div class="entry" style="background-color:#e1a26f">
+                    Revient                  </div>
+                  </div>
+
                 <?php endif; ?>
               <?php endforeach; ?>
             <?php endif; ?>
