@@ -9,6 +9,10 @@ $countItem = count($page2);
   $timelines        = $value['items_timelines'];
   $settingTimelines = $value['setting_data_timelines'];
 
+  $steps            = $value['setting_data_timelines']['steps'];
+  $background       = $steps['background'] ? $steps['background'] : "#cd681e" ;
+  $color            = $steps['color'] ? $steps['color'] : "#fff" ;
+
   if ($key < $countItem) {
     $keyNext       = $key + 1;
     $nextItem      = $page2[$keyNext];
@@ -26,11 +30,6 @@ $countItem = count($page2);
 
       <?php foreach ($timelines as $key => $timeline): ?>
 
-        <?php 
-          $steps            = $timeline['setting_data_timelines']['steps'];
-          $background       = $steps['background'] ? $steps['background'] : "#008000" ;
-          $color            = $steps['color'] ? $steps['color'] : "#fff" ;  
-        ?>
 
         <div class="bt-item-vd item">
           <div class="bt-image-sub-vd aaaa items">
