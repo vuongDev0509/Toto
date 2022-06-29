@@ -28,7 +28,7 @@ $countItem = count($page2);
 
         <?php 
           $steps            = $timeline['setting_data_timelines']['steps'];
-          $background       = $steps['background'] ? $steps['background'] : "#cd681e" ;
+          $background       = $steps['background'] ? $steps['background'] : "#008000" ;
           $color            = $steps['color'] ? $steps['color'] : "#fff" ;  
         ?>
 
