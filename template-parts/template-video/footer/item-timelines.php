@@ -6,8 +6,9 @@
 <?php foreach ($page2 as $key => $value):
   $timelines        = $value['items_timelines'];
   $settingTimelines = $value['setting_data_timelines'];
-  $background       = $value['background_color'] ? $value['background_color'] : "#539291" ;
-  $color            = $value['color'] ? $value['color'] : "#fff" ;
+  $steps            = $value['setting_data_timelines']['steps'];
+  $background       = $steps['background'] ? $steps['background'] : "#cd681e" ;
+  $color            = $steps['color'] ? $steps['color'] : "#fff" ;
 
    if ($value['show_or_hidden_timelines']): ?>
     <div id="toto-steps-carousel-timelines-<?php echo $key ?>" class="be-carousel-timelines-steps bt-carousel-tpldv be_timelines_item_<?php echo $key ?> owl-carousel owl-theme">

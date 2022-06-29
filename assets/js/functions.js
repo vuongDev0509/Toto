@@ -67,17 +67,21 @@ jQuery(function ($) {
     // event for icon play video when click
     function __handleIconPlay($data){
         
-        $ctaPlay.find('.icon-play-vd').click(function(){
+        $(document).on( 'click', '.icon-play-vd', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+      
             let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
-
-            if ($vdActive.paused){
-                $(this).removeClass('paused');
-                $ctaPlay.removeClass('play');
-                $vdActive.play();
-            }else{
-                $(this).addClass('paused');
-                $ctaPlay.addClass('play');
-                $vdActive.pause();
+            if($vdActive){
+              if ($vdActive.paused){
+                  $(this).removeClass('paused');
+                  $(this).parents('.bt-icon-play').removeClass('play');
+                  $vdActive.play();
+              }else{
+                  $(this).addClass('paused');
+                  $(this).addClass('.bt-icon-play').addClass('play');
+                  $vdActive.pause();
+              }
             }
         });
     }
@@ -147,12 +151,22 @@ jQuery(function ($) {
       } )
     }
 
+    function __stopCarousel(){
+      // var owl = $('.bt-carousel-tpldv'):not($itemParents):not($itemChildrens);
+      // owl.trigger('destroy.owl.carousel');
+
+      // var owl2 = $('.bt-carousel-tpldv');
+      // owl.trigger('destroy.owl.carousel');
+    }
+
     function __startVdTemplate($data){
+        let $id = $data.attr('id')
+        //__stopCarousel()
         __renderVdTemplate()
         __stopAllVideo()
-        __showAllVideo()  
+        __showAllVideo() 
+        __handleIconPlay($id) 
 
-        let $id = $data.attr('id')
         let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
        
         $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
@@ -161,7 +175,7 @@ jQuery(function ($) {
             $vdActive.play();
         }
         
-        __handleIconPlay($id)
+        
     }
 
     function __renderVdTemplate(){
@@ -475,10 +489,18 @@ jQuery(function ($) {
 
     let $itemMenu      = $header.find('.bt_list_item_header_video .heading');
     let $itemHeader    = $header.find('.be_header_items_template')
+    const $ctaComeback = $itemHeader.find('.bt-back')
 
     __loadSsTimelines()
     __showItemHeader()
     __handleMenuBar()
+
+    // comeback header main when click button on item header template
+    $ctaComeback.click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).parents('.be_header_items_template').removeClass('active')
+    })
    
     function __loadSsTimelines(){
         $header.find('.bt-meta-hd').click(function(){
@@ -610,6 +632,7 @@ jQuery(function ($) {
           __showTimelinesTotoBus()
         }else{
           if ($dataTimlines.length <= 0) return;
+          console.log($dataTimlines)
           __checkTimlines($dataTimlines);
         }
       });
