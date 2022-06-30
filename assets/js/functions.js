@@ -70,8 +70,19 @@ jQuery(function ($) {
         $(document).on( 'click', '.icon-play-vd', function(e){
           e.preventDefault();
           e.stopPropagation();
-      
+          //__stopAllVideo();
+        
             let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
+
+          let myVideo = document.querySelector(`.bt-carousel-tpldv:not(#${$data}) .owl-item.active .video-js`);
+
+          console.log(myVideo)
+
+        //   $.each( myVideo, function (index, value ) {
+        //     value.pause();
+        // } )
+
+            console.log($vdActive)
             if($vdActive){
               if ($vdActive.paused){
                   $(this).removeClass('paused');
@@ -101,11 +112,10 @@ jQuery(function ($) {
     }
 
     function __redirectStepVd($data){
-     console.log($data)
       $mainSite.find('.bt-section').addClass('hidden')
-                                  .removeClass('active')
+      $mainSite.find('.bt-section').removeClass('active')
       $mainSite.find(`#${$data}.bt-section`).addClass('active')
-                                  .removeClass('hidden')                       
+      $mainSite.find(`#${$data}.bt-section`).removeClass('hidden')                       
     }
 
     function __backHomepage(){
@@ -145,28 +155,19 @@ jQuery(function ($) {
     function __stopAllVideo(){
       $ctaPlay.addClass('play');
       $ctaPlay.find('.icon-play-vd').addClass('paused');
-      let $Videos        = $mainSite.find('video');
+      let $Videos = $mainSite.find('video');
       $.each( $Videos, function (index, value ) {
           value.pause();
       } )
-    }
-
-    function __stopCarousel(){
-      // var owl = $('.bt-carousel-tpldv'):not($itemParents):not($itemChildrens);
-      // owl.trigger('destroy.owl.carousel');
-
-      // var owl2 = $('.bt-carousel-tpldv');
-      // owl.trigger('destroy.owl.carousel');
     }
 
     function __startVdTemplate($data){
         let $id = $data.attr('id')
         //__stopCarousel()
         __renderVdTemplate()
-        __stopAllVideo()
         __showAllVideo() 
-        __handleIconPlay($id) 
-
+        __stopAllVideo()
+        
         let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
        
         $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
@@ -174,7 +175,8 @@ jQuery(function ($) {
         if($vdActive){
             $vdActive.play();
         }
-        
+
+        __handleIconPlay($id) 
         
     }
 
