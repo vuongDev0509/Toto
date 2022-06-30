@@ -59,10 +59,10 @@ jQuery(function ($) {
     });
 
     // redirect to inner page
-    $itemParents.find('.__navs-videos .__step-inner').click(function(){
-      let $dataPage = $(this).data('page');
-      $(this).parents('.bt-item-vd').find(`.bt-${$dataPage}-step-vd`).addClass('active');
-    })
+    // $itemParents.find('.__navs-videos .__step-inner').click(function(){
+    //   let $dataPage = $(this).data('page');
+    //   $(this).parents('.bt-item-vd').find(`.bt-${$dataPage}-step-vd`).addClass('active');
+    // })
 
     // event for icon play video when click
     function __handleIconPlay($data){
@@ -101,10 +101,10 @@ jQuery(function ($) {
     }
 
     function __redirectStepVd($data){
-     
+     console.log($data)
       $mainSite.find('.bt-section').addClass('hidden')
                                   .removeClass('active')
-      $mainSite.find(`.bt-section.${$data}`).addClass('active')
+      $mainSite.find(`#${$data}.bt-section`).addClass('active')
                                   .removeClass('hidden')                       
     }
 

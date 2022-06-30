@@ -369,61 +369,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_61f0f67f06bbd",
-            "label": "List Item Maps",
-            "name": "list_item_maps",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "100",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_61f0f6ab06bbe",
-                    "label": "Title Maps",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_6201dd3e7c0d4",
-                    "label": "Item Color",
-                    "name": "item_color",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "#cd681e"
-                }
-            ]
-        },
-        {
             "key": "field_61efb02e11dd7",
             "label": "List Items",
             "name": "list_items_page_2_tplvd",
@@ -489,7 +434,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -504,11 +449,53 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
                     "default_value": ""
+                },
+                {
+                    "key": "field_62bd24b963f42",
+                    "label": "Show on maps",
+                    "name": "show_on_maps",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Show",
+                    "ui_off_text": "Hidden"
+                },
+                {
+                    "key": "field_62bd3cbe60198",
+                    "label": "Color Maps",
+                    "name": "color_maps",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62bd24b963f42",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "#008000"
                 },
                 {
                     "key": "field_621704e5d3867",
@@ -1400,50 +1387,6 @@
                     ]
                 },
                 {
-                    "key": "field_5fa35db342d0c",
-                    "label": "Photos",
-                    "name": "photos_step_vd",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "elementor_library"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 1,
-                    "multiple": 0,
-                    "return_format": "id",
-                    "ui": 1
-                },
-                {
-                    "key": "field_5fb372202a1ec",
-                    "label": "Dessins",
-                    "name": "dessins_step_vd",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "elementor_library"
-                    ],
-                    "taxonomy": "",
-                    "allow_null": 1,
-                    "multiple": 0,
-                    "return_format": "id",
-                    "ui": 1
-                },
-                {
                     "key": "field_621c748e40e44",
                     "label": "List Item Maps",
                     "name": "list_item_maps",
@@ -2160,5 +2103,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1656493022
+    "modified": 1656569802
 }

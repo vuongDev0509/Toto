@@ -8,9 +8,8 @@
 $tpl_vd      = get_fields();
 $video_steps = $tpl_vd['video_step'];
 $timelines   = $tpl_vd['list_items_page_2_tplvd'];
-
 ?>
-<div>
+
 <div id="bt-parents-video" class="bt-carousel-tpldv owl-carousel owl-theme">
     <?php
     $i = 0;
@@ -35,16 +34,12 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
                 <?php if($items['item_step_video']){
                     $item_steps = $items['item_step_video']; ?>
                     <div class="bt-items-page __navs-videos">
-                        <?php if($items['photos_step_vd']){ ?>
-                            <h2 class="bt-photos-step bt-title __step-inner" data-page="gallery"> Photos </h2>
-                        <?php } ?>
-                        <?php if($items['dessins_step_vd']){ ?>
-                            <h2 class="bt-dessins-step bt-title __step-inner" data-page="dessins"> Dessins </h2>
-                        <?php } ?>
-
                         <?php foreach( $item_steps as $steps ): ?>
-                            <?php $slugItem = sanitize_title($steps['name_item_step_video']); ?>
-                            <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                            <?php 
+                                $slugItem = sanitize_title($steps['name_item_step_video']); 
+                                $idItem   = $steps['content'] ? $steps['content'] : " ";
+                             ?>
+                            <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="ss-<?php echo $idItem; ?>">
                                 <?php if($steps['link_item_step_video']){ ?>
                                         <a href="<?php echo $steps['link_item_step_video'] ?>"> <?php echo $steps['name_item_step_video'] ?> </a>
                                 <?php }else { ?>
@@ -59,15 +54,12 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
                             <span class="toggole-menu-mobile"> </span>
                         </div>
                         <ul class="bt-menu-mobile menu-step" style="display:none;">
-                            <?php if($items['photos_step_vd']){ ?>
-                                <li class="bt-photos-step item __step-inner" data-page="gallery"> Photos </li>
-                            <?php } ?>
-                            <?php if($items['dessins_step_vd']){ ?>
-                                <li class="bt-dessins-step item __step-inner" data-page="dessins"> Dessins </li>
-                            <?php } ?>
                             <?php foreach( $item_steps as $steps ): ?>
-                                <?php $slugItem = sanitize_title($steps['name_item_step_video']); ?>
-                                <li class="step item __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>">
+                                <?php 
+                                    $slugItem = sanitize_title($steps['name_item_step_video']);
+                                    $idItem   = $steps['content'] ? $steps['content'] : " ";
+                                ?>
+                                <li class="step item __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="ss-<?php echo $idItem; ?>">
                                     <?php if($steps['link_item_step_video']){ ?>
                                             <a href="<?php echo $steps['link_item_step_video'] ?>"> <?php echo $steps['name_item_step_video'] ?> </a>
                                     <?php }else { ?>
@@ -100,24 +92,7 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
             <video  class="items  video-js" src="<?php echo $items['link_video_step'] ?>" playsinline>
                 <source src="<?php echo $items['link_video_step'] ?>" type="video/mp4">
             </video>
-            <?php if($items['photos_step_vd']){
-                $gallerys = $items['photos_step_vd']; ?>
-                <div class="bt-gallery-step-vd items bt-item-details">
-                    <?php echo do_shortcode('[elementor-template id="'.$gallerys.'"]'); ?>
-                    <div class="bt-comeback">
-                        <?php get_template_part('template-parts/content/content', 'comeback' ); ?>
-                    </div>
-                </div>
-            <?php } ?>
-            <?php if($items['dessins_step_vd']){
-                $dessins = $items['dessins_step_vd']; ?>
-                <div class="bt-dessins-step-vd items bt-item-details">
-                    <?php echo do_shortcode('[elementor-template id="'.$dessins.'"]'); ?>
-                    <div class="bt-comeback">
-                        <?php get_template_part('template-parts/content/content', 'comeback' ); ?>
-                    </div>
-                </div>
-            <?php } ?>
+
 
             <img src="https://job.beplusprojects.com/toto/wp-content/uploads/2022/03/icon-next.png" alt="icon-next" class="icon-switch-next be-icon-next">
 
@@ -125,7 +100,7 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
         <?php $i++; ?>
     <?php endforeach;?>
 </div>
-</div>
+
 
 <?php get_template_part('template-parts/content/content','second-video'); ?>
 <?php get_template_part('template-parts/template-video/timelines/item','timelines'); ?>

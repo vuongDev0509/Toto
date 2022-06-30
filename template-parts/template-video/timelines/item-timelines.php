@@ -47,9 +47,11 @@ $countItem = count($page2);
               $item_menus = $timeline['menu']; ?>
               <div class="bt-items-page __navs-videos">
                 <?php foreach( $item_menus as $menu ):
-                  $slugItem = sanitize_title($menu['item']);
-                  $type_menu = sanitize_title($menu['type']); ?>
-                  <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="bt-<?php echo $slugItem; ?>" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>">
+                  $slugItem  = sanitize_title($menu['item']);
+                  $type_menu = sanitize_title($menu['type']); 
+                  $idItem    = $menu['content'] ? $menu['content'] : " ";
+                  ?>
+                  <h2 class="bt-step bt-title __navs-videos-step bt-<?php echo $slugItem; ?>" data-page="ss-<?php echo $idItem ?>" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>">
                     <?php if($type_menu == 'url'){ ?>
                       <a href="<?php echo $menu['url'] ?>"> <?php echo $menu['item'] ?> </a>
                     <?php }else { ?>
@@ -100,15 +102,5 @@ $countItem = count($page2);
       <?php endforeach; ?>
 
     </div>
-    <?php
-      if($key==1) {
-        ?>
-          <div class="wrapper-btn-nb-step">
-            <a href="#" class="back-step0-add">TOTO Bus Tour 2020</a>
-            <a href="#" class="next-step2-add">TOTO Am Éislek</a>
-          </div>
-        <?php
-      }
-    ?>
   <?php endif; ?>
 <?php endforeach; ?>

@@ -4,6 +4,7 @@ $timelines_toto_bus = $tpl_vd['video_step'];
 $image_map          = $tpl_vd['image_maps_page_2'];
 $locations          = $tpl_vd['list_item_maps'];
 $list_item          = $tpl_vd['list_items_page_2_tplvd'];
+$timelines          = $tpl_vd['list_items_page_2_tplvd'];
 
 ?>
 <section id="page_2" class="bt-section page_2">
@@ -15,34 +16,43 @@ $list_item          = $tpl_vd['list_items_page_2_tplvd'];
           <div class="bt_image_maps">
             <img src="<?php echo $image_map['url'] ?>" alt="image-maps">
 
-
             <?php if (!empty($timelines_toto_bus)): ?>
+
               <?php foreach ($timelines_toto_bus as $key => $value): ?>
                 <?php $maps =  $value['list_item_maps'] ?>
                 <?php if (!empty($maps['title'])): ?>
                   <?php $color = isset($maps['color']) ? $maps['color'] : '#e06a0a'; ?>
-
-                  <div class="item-location item-location-<?php echo $key ?>" data-position="<?php echo $key ?>">
+                  <div class="item-location toto-location-<?php echo $key ?>" data-position="<?php echo $key ?>">
                     <span class="dot" <?php echo ($color) ? 'style="background-color:'.$color.'"' : ''; ?>></span>
                     <div class="entry" <?php echo ($color) ? 'style="background-color:'.$color.'"' : ''; ?>>
                       <?php echo $maps['title'] ?>
                     </div>
                   </div>
-
-                  <div class="custom item-location item-location-11" data-position="11">
-                    <span class="dot" style="background-color:#e1a26f"></span>
-                    <div class="entry" style="background-color:#e1a26f">
-                    Am eisleck                    </div>
-                  </div>
-
-                  <div class="custom item-location item-location-12" data-position="12">
-                    <span class="dot" style="background-color:#e1a26f"></span>
-                    <div class="entry" style="background-color:#e1a26f">
-                    Revient                  </div>
-                  </div>
-
                 <?php endif; ?>
               <?php endforeach; ?>
+
+              <!-- show titimelines on maps -->
+              <?php if (!empty($timelines)): ?>
+                <?php foreach ($timelines as $key => $value): ?>
+                  <?php 
+                    $show_map = $value['show_on_maps'];
+                    $heading  = sanitize_title($value['heading']);
+                    if($show_map){
+                      $color_map = $value['color_maps'];
+                      $timeline  = $value['items_timelines'];
+                      foreach($timeline as $key => $value){ ?>
+                          <div class="item-location <?php echo $heading ?>-location-<?php echo $key ?>" data-position="<?php echo $key ?>">
+                            <span class="dot" <?php echo ($color_map) ? 'style="background-color:'.$color_map.'"' : ''; ?>></span>
+                            <div class="entry" <?php echo ($color_map) ? 'style="background-color:'.$color_map.'"' : ''; ?>>
+                              <?php echo $value['name'] ?>
+                            </div>
+                          </div>
+                      <?php }
+                    }
+                  ?>
+                <?php endforeach; ?>
+              <?php endif; ?>
+
             <?php endif; ?>
 
           </div>
