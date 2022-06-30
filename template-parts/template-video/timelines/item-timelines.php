@@ -29,19 +29,26 @@ $countItem = count($page2);
     <div id="toto-main-carousel-timelines-<?php echo $key ?>" class="be-carousel-timelines-main bt-carousel-tpldv be_timelines_item_<?php echo $key ?> owl-carousel owl-theme">
 
       <?php foreach ($timelines as $key => $timeline): ?>
-
-
+        <?php $backgroundTimeline = $timeline['background']; ?>
         <div class="bt-item-vd item">
-          <div class="bt-image-sub-vd aaaa items">
+          <?php if($backgroundTimeline == 'Image'){ 
+            $image  = $timeline['image'] ? $timeline['image'] : " " ; ?>
+            <div class="item-image" style="background-image: url('<?php echo $image ?>')"> </div>
+          <?php } ?>
+          
+
+          <div class="bt-image-sub-vd items">
             <?php if($settingTimelines['icon_right_image']){ ?>
               <img src="<?php echo $settingTimelines['icon_right_image']; ?>" alt="image-sub" />
             <?php } ?>
           </div>
-
+            
           <div class="bt-meta items">
-            <div class="bt-icon-play">
-              <div class="icon-play-vd"> </div>
-            </div>
+            <?php if($backgroundTimeline == 'Video'){ ?>
+              <div class="bt-icon-play">
+                <div class="icon-play-vd"> </div>
+              </div>
+            <?php } ?>
 
             <?php if($timeline['menu']){
               $item_menus = $timeline['menu']; ?>
@@ -94,10 +101,12 @@ $countItem = count($page2);
               <?php endif; ?>
             </div>
           </div>
-
-          <video  class="items  video-js" src="<?php echo $timeline['link'] ?>" playsinline>
-            <source src="<?php echo $timeline['link'] ?>" type="video/mp4">
-          </video>
+          
+          <?php if($backgroundTimeline == 'Video'){ ?>
+            <video  class="items  video-js" src="<?php echo $timeline['link'] ?>" playsinline>
+              <source src="<?php echo $timeline['link'] ?>" type="video/mp4">
+             </video>
+          <?php } ?> 
         </div>
       <?php endforeach; ?>
 

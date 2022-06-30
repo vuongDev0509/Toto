@@ -552,6 +552,60 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62bd5d586a61b",
+                            "label": "Background",
+                            "name": "background",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "Video": "Video",
+                                "Image": "Image"
+                            },
+                            "default_value": [
+                                "video"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_6217067456230",
+                            "label": "Video",
+                            "name": "link",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62bd5d586a61b",
+                                        "operator": "==",
+                                        "value": "Video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
                                 "width": "50",
                                 "class": "",
                                 "id": ""
@@ -563,23 +617,36 @@
                             "maxlength": ""
                         },
                         {
-                            "key": "field_6217067456230",
-                            "label": "Link",
-                            "name": "link",
-                            "type": "text",
+                            "key": "field_62bd5df66a61c",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62bd5d586a61b",
+                                        "operator": "==",
+                                        "value": "Image"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "50",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "return_format": "url",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
                         },
                         {
                             "key": "field_621706ad56232",
@@ -2103,5 +2170,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1656569802
+    "modified": 1656577647
 }
