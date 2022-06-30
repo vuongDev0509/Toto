@@ -37,11 +37,12 @@ $timelines          = $tpl_vd['list_items_page_2_tplvd'];
                   <?php 
                     $show_map = $value['show_on_maps'];
                     $heading  = sanitize_title($value['heading']);
+                    $dataTimeline = "be_timelines_item_$key";
                     if($show_map){
                       $color_map = $value['color_maps'];
                       $timeline  = $value['items_timelines'];
                       foreach($timeline as $key => $value){ ?>
-                          <div class="item-location <?php echo $heading ?>-location-<?php echo $key ?>" data-position="<?php echo $key ?>">
+                          <div class="item-location <?php echo $heading ?>-location-<?php echo $key ?>" data-position="<?php echo $key ?>" data-carousel=<?php echo $dataTimeline ?>>
                             <span class="dot" <?php echo ($color_map) ? 'style="background-color:'.$color_map.'"' : ''; ?>></span>
                             <div class="entry" <?php echo ($color_map) ? 'style="background-color:'.$color_map.'"' : ''; ?>>
                               <?php echo $value['name'] ?>

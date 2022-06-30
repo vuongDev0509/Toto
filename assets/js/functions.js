@@ -570,10 +570,20 @@ jQuery(function ($) {
     })
 
     $itemMaps.click(function(){
-      let $idParents   = $('#bt-parents-video');
-      let $idChildrens = $('#bt-childrens-video');
+      let $idParents   = '';
+      let $idChildrens = '';
       let dataPosition = $(this).data('position');
+      let dataCarousel = $(this).data('carousel');
       var duration = 300;
+      if(dataCarousel){
+        let $itemParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${dataCarousel}`).attr('id');
+        let $itemChildrens = $(`.site-footer .bt-carousel-tpldv.${dataCarousel}`).attr('id');  
+        $idParents = $(`#${$itemParents}`)
+        $idChildrens = $(`#${$itemChildrens}`)
+      }else{
+        $idParents   = $('#bt-parents-video');
+        $idChildrens = $('#bt-childrens-video');
+      }
 
       __activeCarousel()  
       VideoTemplate($idParents, $idChildrens)
@@ -581,7 +591,9 @@ jQuery(function ($) {
       $idParents.show()
       setTimeout( () => {
         $idParents.trigger('to.owl.carousel',[dataPosition, duration, true]);
-    }, 1200 )
+        $idParents.find('.owl-item.active .bt-icon-play').removeClass('paused');
+        $idParents.find('.owl-item.active .icon-play-vd').removeClass('paused')
+      }, 1200 )
     });
 
     function __timelinesNavigation(){
