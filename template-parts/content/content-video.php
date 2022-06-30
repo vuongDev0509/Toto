@@ -82,7 +82,8 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
               <?php foreach ($timelines as $key => $timeline): ?>
                 <?php if ($key == 1): ?>
                   <div class="be_timelines_navigation__item be_timelines_next " >
-                    <span data-timeline="be_timelines_item_1"><?php echo $timeline['heading'] ?></span>
+                    <span class="cta-next" data-timeline="be_timelines_item_1"> </span>
+                    <span class="__text"> <?php echo $timeline['heading'] ?> </span>
                   </div>
                 <?php endif; ?>
               <?php endforeach; ?>

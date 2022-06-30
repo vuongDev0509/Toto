@@ -92,12 +92,14 @@ $countItem = count($page2);
           <div class="be_timelines_navigation">
             <div class="be_timelines_navigation__item be_timelines_next" >
               <?php if ($nextItem['heading']): ?>
-                <span data-timeline="<?php echo $timelinesNext; ?>"> <?php echo $nextItem['heading'] ?> </span>
+                <span class="cta-next" data-timeline="<?php echo $timelinesNext ?>"> </span>
+                <span class="__text"> <?php echo $nextItem['heading'] ?> </span>
               <?php endif; ?>
             </div>
             <div class="be_timelines_navigation__item be_timelines_prev">
               <?php if ($prevItem['heading']): ?>
-                  <span  data-timeline="<?php echo $timelinesPrev ?>"> <?php echo $prevItem['heading'] ?> </span>
+                  <span class="cta-prev" data-timeline="<?php echo $timelinesPrev ?>"> </span>
+                  <span class="__text"> <?php echo $prevItem['heading'] ?> </span>
               <?php endif; ?>
             </div>
           </div>
