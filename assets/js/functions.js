@@ -58,45 +58,6 @@ jQuery(function ($) {
       __redirectStepVd($dataPage)
     });
 
-    // redirect to inner page
-    // $itemParents.find('.__navs-videos .__step-inner').click(function(){
-    //   let $dataPage = $(this).data('page');
-    //   $(this).parents('.bt-item-vd').find(`.bt-${$dataPage}-step-vd`).addClass('active');
-    // })
-
-    // event for icon play video when click
-    function __handleIconPlay($data){
-        
-        $(document).on( 'click', '.icon-play-vd', function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          //__stopAllVideo();
-        
-            let $vdActive = document.querySelector(`#${$data} .owl-item.active .video-js`);
-
-          let myVideo = document.querySelector(`.bt-carousel-tpldv:not(#${$data}) .owl-item.active .video-js`);
-
-          console.log(myVideo)
-
-        //   $.each( myVideo, function (index, value ) {
-        //     value.pause();
-        // } )
-
-            console.log($vdActive)
-            if($vdActive){
-              if ($vdActive.paused){
-                  $(this).removeClass('paused');
-                  $(this).parents('.bt-icon-play').removeClass('play');
-                  $vdActive.play();
-              }else{
-                  $(this).addClass('paused');
-                  $(this).addClass('.bt-icon-play').addClass('play');
-                  $vdActive.pause();
-              }
-            }
-        });
-    }
-
     $( 'body' ).on( 'click', '.bt-comeback .icon-comeback', __comebackSection)
 
     function __comebackSection(){  
@@ -163,21 +124,20 @@ jQuery(function ($) {
 
     function __startVdTemplate($data){
         let $id = $data.attr('id')
-        //__stopCarousel()
+        
         __renderVdTemplate()
-        __showAllVideo() 
+        __showAllVideo()         
         __stopAllVideo()
-        
-        let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
-       
-        $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
-        $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
-        if($vdActive){
-            $vdActive.play();
-        }
 
-        __handleIconPlay($id) 
-        
+        setTimeout( () => {
+          let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
+          $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
+          $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
+  
+          if($vdActive){
+            $vdActive.play();
+          }
+        }, 500 )  
     }
 
     function __renderVdTemplate(){
@@ -626,15 +586,14 @@ jQuery(function ($) {
 
     function __timelinesNavigation(){
       $ctaNavi.on('click',function(e){
-        e.preventDefault()
-        e.stopPropagation()
+        // e.preventDefault()
+        //e.stopPropagation()
         let $dataTimlines = $(this).data('timeline');
   
         if ($dataTimlines == 'be_timelines_item_0') {
           __showTimelinesTotoBus()
         }else{
           if ($dataTimlines.length <= 0) return;
-          console.log($dataTimlines)
           __checkTimlines($dataTimlines);
         }
       });
@@ -708,5 +667,25 @@ jQuery(function ($) {
     TotoBusVideo()
     SecondVideo()
     TimelinesTemplate()
+
+    $(document).on( 'click', '.icon-play-vd', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      const $idCarousel = $(this).parents('.bt-carousel-tpldv').attr('id');
+      let $vdActive = document.querySelector(`#${$idCarousel} .owl-item.active .video-js`);
+          if($vdActive){
+            if ($vdActive.paused){
+                $(this).removeClass('paused');
+                $(this).parents('.bt-icon-play').removeClass('play');
+                $vdActive.play();
+            }else{
+                $(this).addClass('paused');
+                $(this).addClass('.bt-icon-play').addClass('play');
+                $vdActive.pause();
+            }
+          }
+    });
+
+
   });
 });
