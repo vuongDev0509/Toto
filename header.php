@@ -27,7 +27,7 @@
 <?php wp_body_open(); ?>
 <?php $tpl_vd = get_fields(); ?>
 <div class="rotateScreen">
-	<img class="icon-tablet" src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-rotate.png)" alt="icon-rotateScreen"/>
+	<img class="icon-tablet" src="<?php echo get_template_directory_uri(); ?>/resources/assets/images/icon-rotate.png)" alt="icon-rotateScreen"/>
 </div>
 <div class="bt-loading">
 	<?php if($tpl_vd['icon_loading_tplvd']){ ?>
