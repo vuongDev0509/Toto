@@ -81,9 +81,7 @@ jQuery(function ($) {
 
     function __backHomepage(){
       __showHomePage()
-      $mainSite.removeClass('scroll');
-      $stepDessins.removeClass('active')
-      $stepPhoto.removeClass('active')                                      
+      $mainSite.removeClass('scroll');                                     
       $itemParents.trigger("to.owl.carousel", [0, 500, true])
       $itemsMobile.find('.bt-menu-mobile').removeClass('active')
                                           .slideUp("swing")
@@ -100,8 +98,6 @@ jQuery(function ($) {
         $(this).click(function(){
           $mainSite.removeClass('active')
           $ctaToggleNav.removeClass('active')
-          $stepPhoto.removeClass('active')
-          $stepDessins.removeClass('active')
           $ctaToggleNav.removeClass('active')
 
           $mainSite.find('.bt-section').removeClass('active')
@@ -321,12 +317,15 @@ jQuery(function ($) {
             var duration = 300;
             var itemIndex =  $(e.target).parents($itemCarousel).index();
             $itemParents.trigger('to.owl.carousel',[itemIndex, duration, true]);
+            $ctaPlay.removeClass('play');
+            $ctaPlay.find('.icon-play-vd').removeClass('paused');  
            
         }).on("changed.owl.carousel", function (el) {
             var number = el.item.index;
             var $owl_slider = $itemParents.data('owl.carousel');
             $owl_slider.to(number, 100, true);
-           
+            $ctaPlay.removeClass('play');
+            $ctaPlay.find('.icon-play-vd').removeClass('paused');  
         });
   
         __childrenOnchange($itemChildrens)
@@ -598,8 +597,8 @@ jQuery(function ($) {
 
     function __timelinesNavigation(){
       $ctaNavi.on('click',function(e){
-        // e.preventDefault()
-        //e.stopPropagation()
+        e.preventDefault()
+        e.stopPropagation()
         let $dataTimlines = $(this).data('timeline');
   
         if ($dataTimlines == 'be_timelines_item_0') {
