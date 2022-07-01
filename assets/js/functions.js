@@ -112,6 +112,7 @@ jQuery(function ($) {
         let $id = $data.attr('id')
         
         __renderVdTemplate()
+        $itemParents.trigger("to.owl.carousel", [0, 500, true])
         __showAllVideo()         
         __stopAllVideo()
 
