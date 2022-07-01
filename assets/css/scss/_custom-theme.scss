@@ -432,7 +432,7 @@ body{
                             background: transparent;
                             z-index: 120;
                             &.active{
-                                z-index: 121;
+                                z-index: 99999;
                             }
                             &:before{
                                 content: " ";
@@ -682,11 +682,11 @@ body{
                                         right: 0;
                                         width: 40%;
                                         background-color: #fff;
-                                        padding: 50px 10px 20px 20px;
+                                        padding: 80px 10px 20px 20px;
                                         margin: 0;
                                         height: 100vh;
                                         overflow: scroll;
-
+                                        z-index: 999;
                                         @media only screen and (max-width: 767px){
                                             width: 70%;
                                             max-width: 400px;
@@ -733,7 +733,7 @@ body{
                                         height: 52px;
                                         overflow: hidden;
                                         transition: all 1000ms ease-in-out;
-                                        z-index: 9;
+                                        z-index: 9999;
                                         cursor: pointer;
                                         &.active{
                                             > span.toggole-menu-mobile{
@@ -768,6 +768,7 @@ body{
                                             height: 3px;
                                             right: 2px;
                                             top: 22px;
+                                            z-index: 9999;
                                             &:before, &:after{
                                                 content: "";
                                                 position: absolute;

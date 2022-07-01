@@ -38,11 +38,6 @@ jQuery(function ($) {
       __stopAllVideo();
     });
 
-    $ctaNavMobile.click(function(e){
-      e.preventDefault();
-      MenuMobile($itemParents);
-    })
-
     // redirect to inner smiley
     $iconSmiley.click(function(e){
       e.preventDefault()
@@ -260,9 +255,11 @@ jQuery(function ($) {
           }
   
           let vdActive = document.querySelector(".owl-item.active .video-js");
-          if (vdActive.paused){
-            $ctaPlay.removeClass('play');
-            $ctaPlay.find('.icon-play-vd').removeClass('paused');        
+          if(vdActive){
+            if (vdActive.paused){
+              $ctaPlay.removeClass('play');
+              $ctaPlay.find('.icon-play-vd').removeClass('paused');        
+            }
           }
         }
   
@@ -335,18 +332,21 @@ jQuery(function ($) {
     }
   }
 
-  const MenuMobile = ($data) =>{
-    const $tplVideo   = $('.page-template-template-video')
-    const $isNav      = $tplVideo.find('.bt-item-page-mobile')
-    const $menuMobile = $isNav.find('.bt-menu-mobile');
-    const $toggleMenu = $isNav.find('.bt-btn-toggle');
-    let $metaMenu     = $data.find('.owl-item .bt-item-vd .bt-meta');
-
-    $metaMenu.toggleClass('active');
-    $toggleMenu.toggleClass('active');
-    $menuMobile.toggleClass('active')
-               .slideToggle("swing")
-
+  const MenuMobile = () =>{
+    $(document).on( 'click', '.toggole-menu-mobile', function(e){
+      e.preventDefault()
+      e.stopPropagation()
+      const $mainSite = $('.site-main')
+      let $Videos     = $mainSite.find('video')
+      $.each( $Videos, function (index, value ) {
+          value.pause();
+      } )
+      $(this).parents('.bt-item-page-mobile').find('.bt-menu-mobile').slideToggle("swing")
+      $(this).parents('.bt-item-page-mobile').find('.bt-btn-toggle').toggleClass('active')
+      $(this).parents('.bt-carousel-tpldv').find('.owl-item .bt-item-vd .bt-meta').toggleClass('active')
+      $(this).parents('.bt-carousel-tpldv').find('.owl-item.active .icon-play-vd').addClass('paused')
+      // let $idCarousel = $(this).parents('.bt-carousel-tpldv')
+    });
   }
 
   const RenderMetaHeader = () =>{
@@ -671,6 +671,7 @@ jQuery(function ($) {
   });
 
   $(document).ready(function () {
+    MenuMobile()
     HanldeHeader()
     RenderMetaHeader()
     RenderVideo()
@@ -678,7 +679,7 @@ jQuery(function ($) {
     TotoBusVideo()
     SecondVideo()
     TimelinesTemplate()
-
+  
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
       e.stopPropagation();
