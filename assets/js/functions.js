@@ -63,10 +63,18 @@ jQuery(function ($) {
     }
 
     function __redirectStepVd($data){
+
+      __stopAllVideo()
+
       $mainSite.find('.bt-section').addClass('hidden')
       $mainSite.find('.bt-section').removeClass('active')
-      $mainSite.find(`#${$data}.bt-section`).addClass('active')
-      $mainSite.find(`#${$data}.bt-section`).removeClass('hidden')                       
+      if($data == 'bt-section-smiley'){
+        $mainSite.find(`.${$data}.bt-section`).addClass('active')
+        $mainSite.find(`.${$data}.bt-section`).removeClass('hidden')    
+      }else{
+        $mainSite.find(`#${$data}.bt-section`).addClass('active')
+        $mainSite.find(`#${$data}.bt-section`).removeClass('hidden')    
+      }                   
     }
 
     function __backHomepage(){
