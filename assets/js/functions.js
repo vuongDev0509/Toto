@@ -112,11 +112,15 @@ jQuery(function ($) {
         let $id = $data.attr('id')
         
         __renderVdTemplate()
-        $itemParents.trigger("to.owl.carousel", [0, 500, true])
         __showAllVideo()         
         __stopAllVideo()
 
         setTimeout( () => {
+
+          $(".bt-icon-spacing>img").css({
+            "left": '10px'
+          }).fadeIn(500);
+          
           let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
           $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
           $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
