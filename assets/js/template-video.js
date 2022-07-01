@@ -55,41 +55,15 @@
     });
   }
 
-  // function comebackTimelinesMaps(){
-  //   const isLogo       = $('.page-template-template-video .bt-logo .bt-logo-site');
-  //   const mainTemplate = $('.page-template-template-video .site-main');
-  //   const isMenuMobile = $('.page-template-template-video .bt-item-page-mobile .bt-menu-mobile');
-  //   const footerVideo  = $('.page-template-template-video .site-footer')
-  //   const allTimelines = $('.bt-section-tpl-vd .bt-carousel-tpldv');
-
-
-  //   isLogo.click(function(){
-
-  //     $.each( allTimelines.find('video') , function (index, value ) {
-  //         value.pause();
-  //     } );
-
-  //     isMenuMobile.slideUp("swing");
-  //     isMenuMobile.find('bt-btn-toggle').removeClass('active');
-  //     footerVideo.removeClass('active');
-  //   })
-  // }
-
-
   jQuery(window).on('load resize', function () {
-    //loadWidthMaps();
     show_name_project_toto();
     back_map_all_step1();
   });
 
   $( document ).ready(function() {
-    //loadPage3();
     back_map_all_step1();
     switchTotoBus();
-    //comebackTimelinesMaps();
     show_name_project_toto();
   });
-
-
 
 } )( window, jQuery );

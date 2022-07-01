@@ -6,7 +6,6 @@ jQuery(function ($) {
     const $mainSite      = $tplVideo.find('.site-main');
     const $logo          = $tplVideo.find('.bt-logo-site')  
 
-    const $stepParents   = $itemParents.find('.owl-item');
     const $ctaPlay       = $itemParents.find('.bt-meta .bt-icon-play');
     const $itemsMobile   = $itemParents.find('.bt-item-page-mobile');
     const $navDesktop    = $itemParents.find('.bt-items-page .bt-title');
@@ -14,13 +13,9 @@ jQuery(function ($) {
 
     const $iconSmiley    = $itemChildrens.find('.bt-smiley > img');
 
-    const $ctaNavMobile  = $itemsMobile.find('.toggole-menu-mobile');
     const $navMobile     = $itemsMobile.find('.bt-menu-mobile .item');
     const $ctaToggleNav  = $itemsMobile.find('.bt-btn-toggle');
      
-    const $stepPhoto     = $stepParents.find('.bt-gallery-step-vd');
-    const $stepDessins   = $stepParents.find('.bt-dessins-step-vd');
-
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
    
     __startVdTemplate($itemParents);
@@ -345,7 +340,6 @@ jQuery(function ($) {
       $(this).parents('.bt-item-page-mobile').find('.bt-btn-toggle').toggleClass('active')
       $(this).parents('.bt-carousel-tpldv').find('.owl-item .bt-item-vd .bt-meta').toggleClass('active')
       $(this).parents('.bt-carousel-tpldv').find('.owl-item.active .icon-play-vd').addClass('paused')
-      // let $idCarousel = $(this).parents('.bt-carousel-tpldv')
     });
   }
 
@@ -671,15 +665,15 @@ jQuery(function ($) {
   });
 
   $(document).ready(function () {
-    MenuMobile()
     HanldeHeader()
     RenderMetaHeader()
     RenderVideo()
-    RunCarouselInner()
+    MenuMobile()
     TotoBusVideo()
     SecondVideo()
     TimelinesTemplate()
-  
+    RunCarouselInner()
+
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
       e.stopPropagation();

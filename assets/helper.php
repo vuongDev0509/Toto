@@ -17,7 +17,6 @@
     wp_enqueue_style( 'toto-fonts-nunito', get_stylesheet_directory_uri() . '/assets/fonts/Nunito/stylesheet.css', array() );
 
     wp_enqueue_script( 'toto-functions', get_stylesheet_directory_uri() . '/assets/js/functions.js',array( 'jquery' ), '1.0.2', true);
-    wp_enqueue_script( 'toto-custom-theme', get_stylesheet_directory_uri() . '/assets/js/custom-themes.js',array( 'jquery' ), '1.0.1', true);
     wp_enqueue_script( 'toto-custom-ajax', get_stylesheet_directory_uri() . '/assets/js/custom-ajax.js',array( 'jquery' ), '1.0.1', true);
     wp_enqueue_script( 'toto-template-video', get_stylesheet_directory_uri() . '/assets/js/template-video.js',array( 'jquery' ), '1.0.1', true);
  	  wp_enqueue_script( 'toto-owl-carousel', get_stylesheet_directory_uri() . '/assets/js/Owl-Carousel/owl.carousel.js',array( 'jquery' ), '1.0', true);
@@ -31,7 +30,7 @@
         'second_video' => get_field('setting_data_second_video')
       );
 
-      wp_localize_script('toto-custom-theme', 'tv_settings', $settings);
+      wp_localize_script('toto-functions', 'tv_settings', $settings);
 
       $meta_vd = array(
         'icon_spacing' => get_field('icon_spacing')
