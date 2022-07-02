@@ -1,4 +1,71 @@
-<?php 
+<?php
+/**
+ * Created by Vo Van Vuong.
+ * Date: 19/10/2020
+ * Project Name: Toto
+ */
+
+// add svg
+ function add_file_types_to_uploads($file_types){
+     $new_filetypes = array();
+     $new_filetypes['svg'] = 'image/svg+xml';
+     $file_types = array_merge($file_types, $new_filetypes );
+     return $file_types;
+ }
+ add_filter('upload_mimes', 'add_file_types_to_uploads');
+
+ /**
+* create postype in toto
+*/
+function bt_create_posttype() {
+   $supports = array(
+       'title',
+       'editor',
+       'author',
+       'thumbnail',
+       'excerpt',
+       'comments',
+       'revisions',
+   );
+   $labels = array(
+       'name' => _x('Team ', 'toto'),
+       'singular_name' => _x('team', 'toto'),
+       'all_items' => __('All Team'),
+       'search_items' => __('Search Team'),
+       'not_found' => __('No news found.'),
+   );
+   $args = array(
+       'supports' => $supports,
+       'labels' => $labels,
+       'public' => true,
+       'query_var' => true,
+       'rewrite' => array('slug' => 'team'),
+       'has_archive' => true,
+       'hierarchical' => false,
+   );
+   register_post_type('Team', $args);
+
+   $labels2 = array(
+       'name' => _x('Artists ', 'toto'),
+       'singular_name' => _x('artists', 'toto'),
+       'all_items' => __('All Artists'),
+       'search_items' => __('Search Artists'),
+       'not_found' => __('No news found.'),
+   );
+   $args2 = array(
+       'supports' => $supports,
+       'labels' => $labels2,
+       'public' => true,
+       'query_var' => true,
+       'rewrite' => array('slug' => 'artists'),
+       'has_archive' => true,
+       'hierarchical' => false,
+   );
+   register_post_type('Artists', $args2);
+}
+add_action('init', 'bt_create_posttype');
+
+
 // create ajax load page single team, artists
 function custom_ajax_scripts() {
 	global $wp_query;
@@ -7,7 +74,7 @@ function custom_ajax_scripts() {
 	wp_enqueue_script('jquery');
 
 	// register our main script but do not enqueue it yet
-	wp_register_script( 'custom_ajax', get_stylesheet_directory_uri() . '/resources/assets/js/custom-ajax.js', array('jquery') );
+	wp_register_script( 'custom_ajax', get_stylesheet_directory_uri() . '/assets/js/custom-ajax.js', array('jquery') );
 	wp_localize_script( 'custom_ajax', 'custom_ajax_params', array(
 		'ajaxurl' => site_url() .'/wp-admin/admin-ajax.php',
 	) );
