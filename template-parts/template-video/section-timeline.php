@@ -7,9 +7,9 @@ $list_item          = $tpl_vd['list_items_page_2_tplvd'];
 $timelines          = $tpl_vd['list_items_page_2_tplvd'];
 
 ?>
-<section id="page_2" class="bt-section page_2">
+<section id="ss-timeline" class="bt-section ss-timeline">
   <div class="bt-container-full">
-    <div class="page_2_content">
+    <div class="ss-timeline_content">
 
       <?php if (!empty($image_map['url'])): ?>
         <div class="bt_maps">

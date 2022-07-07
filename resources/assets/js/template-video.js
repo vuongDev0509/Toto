@@ -13,8 +13,8 @@
     $('body').on('click','.bt-section.bt-section-tpl-vd.active .bt-item-vd .bt-image-sub-vd img',function(e){
       e.preventDefault();
       $('#main section').addClass('hidden');
-      $('#page_2').removeClass('hidden');
-      $('#page_2').addClass('active');
+      $('#ss-timeline').removeClass('hidden');
+      $('#ss-timeline').addClass('active');
       $('.site-footer').removeClass('active');
     })
   }

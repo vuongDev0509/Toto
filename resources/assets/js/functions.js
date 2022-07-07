@@ -422,7 +422,7 @@ jQuery(function ($) {
   const TotoBusVideo = () =>{
 
     const $tplVideo      = $('.page-template-template-video')
-    const $ctaShow       = $tplVideo.find('#page_2 .heading.be_timelines_toto_bus');
+    const $ctaShow       = $tplVideo.find('#ss-timeline .heading.be_timelines_toto_bus');
     const $itemParents   = $tplVideo.find('#bt-parents-video');
     const $itemChildrens = $tplVideo.find('#bt-childrens-video');
     const $mainSite      = $tplVideo.find('.site-main');
@@ -453,7 +453,7 @@ jQuery(function ($) {
   const HanldeHeader = () =>{
     const $tplVideo    = $('.page-template-template-video');
     const $header      = $tplVideo.find('.bt-section-header-tpldv');
-    const $ssTimelines = $tplVideo.find('#page_2');
+    const $ssTimelines = $tplVideo.find('#ss-timeline');
 
     let $itemMenu      = $header.find('.bt_list_item_header_video .heading');
     let $itemHeader    = $header.find('.be_header_items_template')
@@ -548,7 +548,7 @@ jQuery(function ($) {
 
   const TimelinesTemplate = () =>{
     const $tplVideo      = $('.page-template-template-video');
-    const $ssTimelines   = $tplVideo.find('#page_2');
+    const $ssTimelines   = $tplVideo.find('#ss-timeline');
     const $mainSite      = $tplVideo.find('.site-main');
     const $itemTimelines = $ssTimelines.find('.bt_list_item_header_video .heading')
     const $footer        = $tplVideo.find('.site-footer');

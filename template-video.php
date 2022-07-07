@@ -10,7 +10,7 @@ $tpl_vd = get_fields();
 ?>
 <?php get_template_part( 'template-parts/template-video/template-header', 'video' ); ?>
 <main id="main" class="site-main">
-  <?php get_template_part( 'template-parts/template-video/page', '2' ); ?>
+  <?php get_template_part( 'template-parts/template-video/section', 'timeline' ); ?>
   <?php get_template_part( 'template-parts/template-video/page', '3' ); ?>
 
     <section class="bt-section bt-section-tpl-vd">
