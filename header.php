@@ -26,24 +26,26 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <?php $tpl_vd = get_fields(); ?>
-<div class="rotateScreen">
-	<img class="icon-tablet" src="<?php echo get_template_directory_uri(); ?>/resources/assets/images/icon-rotate.png)" alt="icon-rotateScreen"/>
-</div>
-<div class="bt-loading">
-	<?php if($tpl_vd['icon_loading_tplvd']){ ?>
-		<img src="<?php echo $tpl_vd['icon_loading_tplvd']; ?>" alt="icon-loading">
-	<?php } ?>
-</div>
-<div class="bt-header-main">
-	<div class="bt-container">
-		<a class="bt-logo" href="/toto">
-			<!-- `the_custom_logo();` -->
-			<?php
-			$tpl_vd = get_fields();
-			 if($tpl_vd['logo_site_tpl_vd']){ ?>
-				<img src="<?php echo $tpl_vd['logo_site_tpl_vd']; ?>" class="bt-logo-site bt-icon-comeback" alt="logo-site">
-			<?php } ?>
-		</a>
+<?php if(is_page_template('template-video.php')){ ?>
+	
+	<div class="rotateScreen">
+		<img class="icon-tablet" src="<?php echo get_template_directory_uri(); ?>/resources/assets/images/icon-rotate.png)" alt="icon-rotateScreen"/>
 	</div>
-</div>
+	<div class="bt-loading">
+		<?php if($tpl_vd['icon_loading_tplvd']){ ?>
+			<img src="<?php echo $tpl_vd['icon_loading_tplvd']; ?>" alt="icon-loading">
+		<?php } ?>
+	</div>
+	<div class="bt-header-main">
+		<div class="bt-container">
+			<a class="bt-logo" href="/toto">
+				<?php
+				$tpl_vd = get_fields();
+				if($tpl_vd['logo_site_tpl_vd']){ ?>
+					<img src="<?php echo $tpl_vd['logo_site_tpl_vd']; ?>" class="bt-logo-site bt-icon-comeback" alt="logo-site">
+				<?php } ?>
+			</a>
+		</div>
+	</div>
+<?php } ?>
 <div id="page" class="site">

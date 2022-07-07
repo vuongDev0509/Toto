@@ -17,13 +17,12 @@ function toto_enqueue_scripts_styles() {
 
     // lib owl carousel
     wp_enqueue_script( 'toto-owl-carousel', get_stylesheet_directory_uri() . '/resources/assets/lib/owl-carousel/js/owl.carousel.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
- 	wp_enqueue_script( 'toto-owl-carousel-min', get_stylesheet_directory_uri() . '/resources/assets/lib/owl-carousel/js/owl.carousel.min.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
+ 	  wp_enqueue_script( 'toto-owl-carousel-min', get_stylesheet_directory_uri() . '/resources/assets/lib/owl-carousel/js/owl.carousel.min.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
    
     // lib rangeslider
     wp_enqueue_script( 'toto-rangeslider', get_stylesheet_directory_uri() . '/resources/assets/lib/rangeslider/js/rangeslider.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
     wp_enqueue_script( 'toto-rangeslider-min', get_stylesheet_directory_uri() . '/resources/assets/lib/rangeslider/js/rangeslider.min.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
 
-    wp_enqueue_script( 'toto-functions', get_stylesheet_directory_uri() . '/resources/assets/js/functions.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
     wp_enqueue_script( 'toto-custom-ajax', get_stylesheet_directory_uri() . '/resources/assets/js/custom-ajax.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
     wp_enqueue_script( 'toto-template-video', get_stylesheet_directory_uri() . '/resources/assets/js/template-video.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
     wp_enqueue_script( 'toto-morphing-emoji', get_stylesheet_directory_uri() . '/resources/assets/js/morphing-emoji.js',array( 'jquery' ),  TOTO_WP_TOOLKIT_VER, true);
@@ -37,6 +36,9 @@ function toto_enqueue_scripts_styles() {
 
     
     if(is_page_template('template-video.php')){
+
+      wp_enqueue_script( 'toto-functions', get_stylesheet_directory_uri() . '/resources/assets/js/functions.js',array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
+
       $settings = array(
         'second_video' => get_field('setting_data_second_video')
       );
