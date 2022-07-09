@@ -28,11 +28,11 @@ function toto_enqueue_scripts_styles() {
     wp_enqueue_script( 'toto-morphing-emoji', get_stylesheet_directory_uri() . '/resources/assets/js/morphing-emoji.js',array( 'jquery' ),  TOTO_WP_TOOLKIT_VER, true);
 
     // create ajax load page single team, artists
-	wp_register_script( 'custom_ajax', get_stylesheet_directory_uri() . '/resources/assets/js/custom-ajax.js', array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
-	wp_localize_script( 'custom_ajax', 'custom_ajax_params', array(
-		'ajaxurl' => site_url() .'/wp-admin/admin-ajax.php',
-	) );
- 	wp_enqueue_script( 'custom_ajax' );
+    wp_register_script( 'custom_ajax', get_stylesheet_directory_uri() . '/resources/assets/js/custom-ajax.js', array( 'jquery' ), TOTO_WP_TOOLKIT_VER, true);
+    wp_localize_script( 'custom_ajax', 'custom_ajax_params', array(
+      'ajaxurl' => site_url() .'/wp-admin/admin-ajax.php',
+    ) );
+    wp_enqueue_script( 'custom_ajax' );
 
     
     if(is_page_template('template-video.php')){
@@ -64,9 +64,9 @@ require_once get_stylesheet_directory() ."/vendor/autoload.php";
 use ScssPhp\ScssPhp\Compiler;
 function toto_scss_to_css_compile() {
 
-    // if ( ! WP_DEBUG ) {
-    //     return true;
-    // }
+    if ( ! WP_DEBUG ) {
+        return true;
+    }
     $scss_path = get_stylesheet_directory() . '/resources/assets/css/';
     $scss      = new Compiler();
     $scss->setImportPaths( $scss_path );

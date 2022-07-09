@@ -84,11 +84,9 @@ jQuery(document).ready(function(jQuery) {
         let isRangeslider = jQuery(".bt-draggable  .rangeslider");
         setTimeout( () => {
             if( jQuery(".bt-draggable").children().hasClass("rangeslider")){
-                console.log("check items");
                 let isContent = '<div class="bt-items">';
                 var i;
                 for(i=0; i<=totalStep; i++){
-                    console.log(i);
                     isContent +='<div class="item-circle"></div>'
                 }
                 isContent+='</div>';
@@ -155,8 +153,7 @@ jQuery(document).ready(function(jQuery) {
         jQuery('.bt-section.bt-section-smiley .bt-comeback').removeClass("active");
         jQuery('.bt-section.bt-section-smiley .bt-container .bt-gform').removeClass("active");
         var ajax_url  = custom_ajax_params.ajaxurl;
-        // console.log(a);
-        // var button = jQuery(this);
+        
         jQuery.get(ajax_url+'?action=gf_button_get_form&form_id=1',function(response){
             jQuery('.bt-section.bt-section-smiley .bt-container .bt-gform').html(response).fadeIn();
             // button.remove();
