@@ -499,10 +499,40 @@ jQuery(function ($) {
   const SecondVideo = () =>{
     const $tplVideo           = $('.page-template-template-video');
     const $footer             = $tplVideo.find('.site-footer');
-    let $secondVideo          = $('#toto-second-videos')
-    let $secondVideoStep      = $('#steps-second-videos')
+    const $secondVideo        = $('#toto-second-videos')
+    const $secondVideoStep    = $('#steps-second-videos')
+    const $imgSpacing         = $footer.find('.bt-icon-spacing img');
     let $setting_second_video = tv_settings.second_video;
     __showSecondVideo()
+
+    // hidden scond video
+    $secondVideo.find('.icon-comeback').on('click',function(){
+      $(this).parents('.bt-comeback').addClass('hidden');
+      let icon_spacing = $setting_second_video.icon_spacing;
+      $.each( $secondVideo.find('video') , function (index, value ) {
+          value.pause();
+      } );
+      $imgSpacing.attr('src',icon_spacing);
+      $imgSpacing.css('left','16px');
+      __showTimelinesTotoBus();
+    });
+
+    function __showTimelinesTotoBus(){
+      let parentsTimelines  = $('.site-main .bt-section-tpl-vd');
+      
+      parentsTimelines.siblings().removeClass('active');
+      parentsTimelines.siblings().addClass('hidden');
+      parentsTimelines.addClass('active');
+      parentsTimelines.removeClass('hidden');
+  
+      $footer.addClass('active');
+      $footer.find('.bt-carousel-tpldv').hide();
+      $footer.find('#bt-childrens-video').show();
+  
+      parentsTimelines.find('.bt-carousel-tpldv').hide();
+      parentsTimelines.find('#bt-parents-video').show();
+  
+    }
 
     //Event show step second Video 
     function __showSecondVideo(){
