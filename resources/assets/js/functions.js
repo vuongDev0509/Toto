@@ -564,14 +564,7 @@ jQuery(function ($) {
             // secondVideo
   
             $secondVideo.find('.bt-comeback').removeClass('hidden')
-
-            $.each( $('#bt-sync1').find('video') , function (index, value ) {
-                value.pause();
-            } );
-      
-            $.each( $secondVideo.find('video') , function (index, value ) {
-                value.pause();
-            } );
+            
         });
     }
   }
