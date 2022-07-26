@@ -88,12 +88,14 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
                 <?php endif; ?>
               <?php endforeach; ?>
             </div>
-
-
-            <video  class="items  video-js" src="<?php echo $items['link_video_step'] ?>" playsinline>
-                <source src="<?php echo $items['link_video_step'] ?>" type="video/mp4">
-            </video>
-
+            
+            <?php if($items['type_video'] == 'MP4'){ ?>
+                <video class="items video-js" src="<?php echo $items['link_video_step'] ?>" playsinline>
+                    <source src="<?php echo $items['link_video_step'] ?>" type="video/mp4">
+                </video>
+            <?php }else{ ?>
+                <div class="be-vimeo-vd" data-vimeo-responsive="true" data-vimeo-controls="false" data-vimeo-id="<?php echo $items['video_vimeo'] ?>" id="be-vimeo-vd"></div>
+            <?php } ?>
 
             <img src="https://job.beplusprojects.com/toto/wp-content/uploads/2022/03/icon-next.png" alt="icon-next" class="icon-switch-next be-icon-next">
 

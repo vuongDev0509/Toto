@@ -130,7 +130,7 @@ jQuery(function ($) {
         __renderVdTemplate()
         __showAllVideo()         
         __stopAllVideo()
-
+        console.log("log")
         setTimeout( () => {
 
           $(".bt-icon-spacing>img").css({
@@ -143,6 +143,18 @@ jQuery(function ($) {
   
           if($vdActive){
             $vdActive.play();
+          }
+
+          let $vimeoActive = document.querySelector(`#${$id} .owl-item.active .be-vimeo-vd`);
+          console.log($vimeoActive)
+         
+          var videoPlayer = new Vimeo.Player(`#${$id} .owl-item.active #be-vimeo-vd`);
+
+          console.log(videoPlayer)
+          console.log("vimeo aaa")
+          if($vimeoActive){
+            console.log("vimeo")
+            videoPlayer.on('ended', onPlay);
           }
         }, 500 )  
     }
@@ -224,9 +236,7 @@ jQuery(function ($) {
       function __runCarousel($itemParents, $itemChildrens) {
         let $slidesPerPage  = 11;
         let $itemCarousel   = '.owl-item';
-        let $totalChildrens = $itemParents.find('.bt-item-vd').length;
-        let $vdCurrent      = 1;
-  
+
         let $carouselParent = $itemParents.owlCarousel({
           startPosition: $slidesPerPage,
           items:1,
@@ -276,6 +286,11 @@ jQuery(function ($) {
               $ctaPlay.removeClass('play');
               $ctaPlay.find('.icon-play-vd').removeClass('paused');        
             }
+          }
+
+          let $vimeoActive = document.querySelector(".owl-item.active .be-vimeo-vd");
+          if($vimeoActive.length >0){
+
           }
         }
   
@@ -717,6 +732,13 @@ jQuery(function ($) {
     SecondVideo()
     TimelinesTemplate()
     RunCarouselInner()
+ 
+    var video01Player = new Vimeo.Player('be-vimeo-vd');
+    console.log(video01Player)
+    video01Player.on('play', function() {
+      console.log('Played the first video');
+    });
+
  
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
