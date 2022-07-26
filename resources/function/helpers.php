@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TOTO_WP_TOOLKIT_VER' ) ) {
-	define( 'TOTO_WP_TOOLKIT_VER', WP_DEBUG ? rand() : '0.5.0' );
+	define( 'TOTO_WP_TOOLKIT_VER', WP_DEBUG ? rand() : '0.5.1' );
 }
 
 

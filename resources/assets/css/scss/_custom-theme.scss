@@ -3,7 +3,7 @@
     > .elementor {
         > .elementor-inner{
             > .elementor-section-wrap{
-                .elementor-section{
+                > .elementor-section{
                     &:not(.elementor-section-full_width){
                         position: absolute;
                         left: 50%;

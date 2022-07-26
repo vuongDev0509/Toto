@@ -1,11 +1,21 @@
 <?php
-$tpl_vd        = get_fields();
-$second_videos = $tpl_vd['items_second_videos'];
-$toto_bus      = $tpl_vd['video_step'];
-$timelines     = $tpl_vd['list_items_page_2_tplvd'];
+$tpl_vd          = get_fields();
+$second_videos   = $tpl_vd['items_second_videos'];
+$toto_bus        = $tpl_vd['video_step'];
+$timelines       = $tpl_vd['list_items_page_2_tplvd'];
+$genrenal_button = $tpl_vd['general_button'];
 
 $all_id  = [];
 $list_ids = array();
+
+if(!empty($genrenal_button)){
+    $button_content  = $genrenal_button['content'];
+    $button_type     = $genrenal_button['type'];
+    if($button_type == 'Content'){
+        $idContent = $button_content->ID;
+        array_push($all_id, $idContent);
+    }
+}
 
 if(!empty($second_videos)){
     foreach ($second_videos as $key => $items) {
@@ -59,6 +69,7 @@ if(!empty($timelines)){
 
 
 $list_sections = array_unique($all_id);
+
 if(!empty($list_sections)){
     foreach( $list_sections as $item ): ?>
         <section id="ss-<?php echo $item ?>" class="bt-section bt-section-steps">

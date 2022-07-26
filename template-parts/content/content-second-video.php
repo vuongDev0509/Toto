@@ -7,7 +7,7 @@ $video_steps = $tpl_vd['items_second_videos'];
 <div id="toto-second-videos" class="bt-carousel-tpldv owl-carousel owl-theme">
   <?php
     foreach( $video_steps as $items ): ?>
-        <div class="bt-item-vd item kkkáđâsđâsđa">
+        <div class="bt-item-vd item">
           <div class="bt-image-sub-vd items">
               <?php if($tpl_vd['setting_data_second_video']['icon_right_image']){ ?>
                   <img src="<?php echo $tpl_vd['setting_data_second_video']['icon_right_image']; ?>" alt="image-sub" />

@@ -64,9 +64,9 @@ require_once get_stylesheet_directory() ."/vendor/autoload.php";
 use ScssPhp\ScssPhp\Compiler;
 function toto_scss_to_css_compile() {
 
-    if ( ! WP_DEBUG ) {
-        return true;
-    }
+    // if ( ! WP_DEBUG ) {
+    //     return true;
+    // }
     $scss_path = get_stylesheet_directory() . '/resources/assets/css/';
     $scss      = new Compiler();
     $scss->setImportPaths( $scss_path );

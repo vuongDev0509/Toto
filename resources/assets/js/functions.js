@@ -17,6 +17,8 @@ jQuery(function ($) {
     const $ctaToggleNav  = $itemsMobile.find('.bt-btn-toggle');
      
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
+
+    const $genrenalBt    = $('#ss-genrenal-button');
    
     __startVdTemplate($itemParents);
 
@@ -41,6 +43,12 @@ jQuery(function ($) {
       $mainSite.addClass('scroll')
       __redirectStepVd($dataSs)                            
     })
+
+    $genrenalBt.find('.__genrenal-button > span').click(function(){
+      let $dataPage = $(this).data('page');
+      $mainSite.removeClass("scroll")
+      __redirectStepVd($dataPage)
+    });
 
     $itemParents.find('.__navs-videos .__navs-videos-step').click(function(){
       let $dataPage = $(this).data('page');
@@ -709,7 +717,7 @@ jQuery(function ($) {
     SecondVideo()
     TimelinesTemplate()
     RunCarouselInner()
-    // if ($itemParents.length <= 0 || $itemChildrens.length <= 0) return
+ 
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
       e.stopPropagation();

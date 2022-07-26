@@ -23,6 +23,8 @@ $tpl_vd = get_fields();
                 </div>
             <?php } ?>
         </div>
+
+        <?php get_template_part('template-parts/template-video/section-gerenal', 'button'); ?>
     </section>
 
     <section class="bt-section bt-section-smiley">
@@ -30,6 +32,7 @@ $tpl_vd = get_fields();
     </section>
 
     <?php get_template_part('template-parts/template-video/section', 'steps'); ?>
+    
 </main>
 <?php
 get_footer();

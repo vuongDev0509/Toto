@@ -1,0 +1,47 @@
+.bt-section-tpl-vd.active{
+    #ss-genrenal-button{
+        z-index: 999;
+    }    
+}
+#ss-genrenal-button{
+    height: auto;    
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -999;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    .ss-genrenal-button__content{
+        .__genrenal-button{
+            .__button{
+                font-size: 28px;
+                line-height: 38px;
+                letter-spacing: 0.32px;
+                color: #fff;
+                display: inline-block;
+                padding: 20px 10px;
+                background-color: #e06a0a;
+                margin: 0;
+                font-weight: 400;
+                
+                min-width: 200px;
+                width: fit-content;
+                text-align: center;
+                max-height: 78px;
+                z-index: 10;
+                text-transform: uppercase;
+                cursor: pointer;
+                font-family: 'Nunito';
+                -webkit-transition: all 0.8s ease-in-out;
+                -moz-transition: all 0.8s ease-in-out;
+                -ms-transition: all 0.8s ease-in-out;
+                -o-transition: all 0.8s ease-in-out;
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
