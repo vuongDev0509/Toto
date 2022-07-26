@@ -3,9 +3,10 @@
         z-index: 999;
     }    
 }
+
 #ss-genrenal-button{
     height: auto;    
-    width: 100%;
+    width: auto;
     position: fixed;
     left: 0;
     top: 50%;
@@ -15,6 +16,9 @@
     display: flex;
     align-items: center;
     align-content: center;
+    @media only screen and (max-width: 991px){
+        min-height: 160px;
+    }
     .ss-genrenal-button__content{
         .__genrenal-button{
             .__button{
@@ -24,10 +28,9 @@
                 color: #fff;
                 display: inline-block;
                 padding: 20px 10px;
-                background-color: #e06a0a;
+                background-color: $theme-color-1;
                 margin: 0;
                 font-weight: 400;
-                
                 min-width: 200px;
                 width: fit-content;
                 text-align: center;
@@ -35,12 +38,23 @@
                 z-index: 10;
                 text-transform: uppercase;
                 cursor: pointer;
-                font-family: 'Nunito';
+                font-family: $font-family;
                 -webkit-transition: all 0.8s ease-in-out;
                 -moz-transition: all 0.8s ease-in-out;
                 -ms-transition: all 0.8s ease-in-out;
                 -o-transition: all 0.8s ease-in-out;
                 transform: rotate(-90deg);
+                @media only screen and (max-width: 991px){
+                    font-size: 20px;
+                    line-height: 30px;
+                    padding: 8px 20px;
+                    min-width: 100px;
+                }
+                @media only screen and (max-width: 767px){
+                    font-size: 15px;
+                    line-height: 26px;
+                    padding: 2px 10px;
+                }
             }
         }
     }
