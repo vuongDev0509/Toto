@@ -66,28 +66,15 @@ $timelines          = $tpl_vd['list_items_page_2_tplvd'];
           <?php foreach ($list_item as $key => $value):
             $background      = $value['background_color'] ? $value['background_color'] : "#539291" ;
             $color           = $value['color'] ? $value['color'] : "#fff" ;
-            $activeTimelines = $value['show_or_hidden_timelines']  ? "be_timelines_item_$key" : "";
-            $dataTotoBus     = $key == 0 ? "bt-sync1" : "";
+            $activeTimelines = $value['show_or_hidden_timelines']  ? "be_timelines_item_$key" : " ";
+            $dataTotoBus     = $key == 0 ? "bt-parents-video" : "";
             $activeTotoBus   = $key == 0 ? "be_timelines_toto_bus" : "";
             $countItem       = count($list_item);
-            $class_click_custom = '';
-
-            if($key == 0) {
-              $class_click_custom = 'step0_page2';
-            }
-            if($key == 1) {
-              $class_click_custom = 'step1_page2';
-            }
-            if($key == 2) {
-              $class_click_custom = 'step2_page2';
-            }
-            if($key == 3) {
-              $class_click_custom = 'step3_page2';
-            }
+  
             ?>
 
             <?php if (!empty($value['heading'])): ?>
-              <h3 data-index="<?php echo $key?>" class="heading <?php echo $activeTotoBus.' '.$class_click_custom ?>" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>"  data-toto-bus="<?php echo $dataTotoBus ?>" data-timelines="<?php echo $activeTimelines ?>">
+              <h3 data-index="<?php echo $key?>" class="heading <?php echo $activeTotoBus ?>" style="background-color:<?php echo $background ?>; color:<?php echo $color ?>"  data-toto-bus="<?php echo $dataTotoBus ?>" data-timelines="<?php echo $activeTimelines ?>">
                 <?php if (!empty($value['link'])): ?>
                   <a href="<?php echo $value['link'] ?>"> <?php echo $value['heading'] ?> </a>
                 <?php else: ?>

@@ -429,24 +429,30 @@ jQuery(function ($) {
     const $totoBus       = $mainSite.find('.bt-section-tpl-vd');
     const $footer        = $tplVideo.find('.site-footer');
   
+    if ($itemParents.length <= 0 || $itemChildrens.length <= 0) return
 
-    $ctaShow.click(function(){
-        VideoTemplate($itemParents, $itemChildrens)
-        __showTotoBusVideo();
+    $ctaShow.click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      __showTotoBusVideo();
+      VideoTemplate($itemParents, $itemChildrens)
     });
 
     function __showTotoBusVideo(){
-        $totoBus.siblings().removeClass('active')
-                .siblings().addClass('hidden')
-        
-        $totoBus.removeClass('hidden')
-                .addClass('active')
+      $totoBus.siblings().removeClass('active')
+      $totoBus.siblings().addClass('hidden')
+      
+      $totoBus.removeClass('hidden')
+      $totoBus.addClass('active')
 
-        $footer.addClass('active')
-        $footer.find('.bt-carousel-tpldv').hide();
-        $totoBus.find('.bt-carousel-tpldv').hide();
-        $itemChildrens.show();
-        $itemParents.show();
+      $footer.addClass('active')
+      $footer.find('.bt-carousel-tpldv').hide();
+  
+      $totoBus.find('.bt-carousel-tpldv').hide();
+      $totoBus.find('.bt-carousel-tpldv').addClass('test')
+  
+      $itemChildrens.show();
+      $itemParents.show();
     }
   }
 
@@ -579,10 +585,36 @@ jQuery(function ($) {
     const $ctaNavi       = $isNavigation.find('.be_timelines_navigation__item span');
     const $itemMaps      = $ssTimelines.find('.bt_image_maps .item-location');
     const $ctaComeback   = $('.be_timelines_navigation__item .bt-back')
-    const $ctaTotoBus    = $isNavigation.find('.bt-back')
+    
+    $ctaNavi.on('click',function(e){
+      e.preventDefault()
+      e.stopPropagation()
+      let $dataTimlines = $(this).data('timeline')
 
-    __showTimelinesCarousel()
-    __timelinesNavigation()
+      if ($dataTimlines == 'be_timelines_item_0') {
+        __showTimelinesTotoBus()
+      }else{
+        if ($dataTimlines.length <= 0) return;
+        __checkTimlines($dataTimlines);
+      }
+    });
+
+    $itemTimelines.click(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      let $dataTimeline = $(this).data('timelines');
+      if ($dataTimeline.length <= 0 || $dataTimeline=='be_timelines_item_0') return;
+       
+        let $idParents     = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
+        let $idChildrens   = $(`.site-footer .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
+        let $itemParents   = $(`#${$idParents}`)
+        let $itemChildrens = $(`#${$idChildrens}`)
+        VideoTemplate($itemParents, $itemChildrens)
+        __activeCarousel()
+        $itemParents.show()
+        $itemChildrens.show()
+        
+    });
 
     $ctaComeback.click(function(){
       $mainSite.find('.bt-section').removeClass('active');
@@ -625,20 +657,6 @@ jQuery(function ($) {
       }, 1200 )
     });
 
-    function __timelinesNavigation(){
-      $ctaNavi.on('click',function(e){
-        e.preventDefault()
-        e.stopPropagation()
-        let $dataTimlines = $(this).data('timeline');
-  
-        if ($dataTimlines == 'be_timelines_item_0') {
-          __showTimelinesTotoBus()
-        }else{
-          if ($dataTimlines.length <= 0) return;
-          __checkTimlines($dataTimlines);
-        }
-      });
-    }
 
     function __activeCarousel(){
       $mainSite.find('.bt-section').removeClass('active');
@@ -671,24 +689,6 @@ jQuery(function ($) {
       $itemParents.show();
       VideoTemplate($itemParents, $itemChildrens)
     }
-
-    function __showTimelinesCarousel(){
-      $itemTimelines.click(function(){
-        let $dataTimeline = $(this).data('timelines');
-
-        if ($dataTimeline != "" && $dataTimeline != undefined) {
-         
-          let $idParents     = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
-          let $idChildrens   = $(`.site-footer .bt-carousel-tpldv.${$dataTimeline}`).attr('id');
-          let $itemParents   = $(`#${$idParents}`)
-          let $itemChildrens = $(`#${$idChildrens}`)
-          VideoTemplate($itemParents, $itemChildrens)
-          __activeCarousel()
-          $itemParents.show()
-          $itemChildrens.show()
-        }
-      });
-    }
   }
 
   $(window).on('resize', function () {
@@ -709,7 +709,7 @@ jQuery(function ($) {
     SecondVideo()
     TimelinesTemplate()
     RunCarouselInner()
-
+    // if ($itemParents.length <= 0 || $itemChildrens.length <= 0) return
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
       e.stopPropagation();
