@@ -103,13 +103,21 @@ $countItem = count($page2);
               <?php endif; ?>
             </div>
           </div>
-          <?php echo $backgroundTimeline ?>
+    
           <?php if($backgroundTimeline == 'Video'){ ?>
-            <video  class="items  video-js" src="<?php echo $timeline['link'] ?>" playsinline>
-              <source src="<?php echo $timeline['link'] ?>" type="video/mp4">
+            
+            <?php if(!empty($timeline['link'])){ ?>
+              <video  class="items video-js" src="<?php echo $timeline['link'] ?>" playsinline>
+                <source src="<?php echo $timeline['link'] ?>" type="video/mp4">
              </video>
+            <?php } ?>
+
           <?php }elseif($backgroundTimeline == 'Vimeo'){ ?>
-            <div class="my-vimeo" data-vimeo-id="<?php echo $timeline['vimeo'] ?>" id="my-vimeo"></div>
+
+            <?php if(!empty($timeline['vimeo'])){ ?>
+                    <div class="be-vimeo-vd" data-vimeo-responsive="true" data-vimeo-controls="false" data-vimeo-id="<?php echo $timeline['vimeo'] ?>" id="be-vimeo-<?php echo $timeline['vimeo'] ?>"></div>
+            <?php } ?>
+
           <?php } ?> 
         </div>
       <?php endforeach; ?>

@@ -9,8 +9,8 @@ jQuery(function ($) {
     const $ctaPlay       = $itemParents.find('.bt-meta .bt-icon-play');
     const $itemsMobile   = $itemParents.find('.bt-item-page-mobile');
     const $navDesktop    = $itemParents.find('.bt-items-page .bt-title');
-    let $allVideo        = $itemParents.find('video');
-
+    const $allVideo      = $itemParents.find('video');
+  
     const $iconSmiley    = $itemChildrens.find('.bt-smiley > img');
 
     const $navMobile     = $itemsMobile.find('.bt-menu-mobile .item');
@@ -19,6 +19,7 @@ jQuery(function ($) {
     const $ssVideo       = $mainSite.find('.bt-section-tpl-vd');
 
     const $genrenalBt    = $('#ss-genrenal-button');
+    const $allVimeos     = $ssVideo.find('.be-vimeo-vd');
    
     __startVdTemplate($itemParents);
 
@@ -65,9 +66,9 @@ jQuery(function ($) {
 
     function __showHomePage(){
       $mainSite.find('.bt-section').removeClass('active')
-                                    .addClass('hidden')
+      $mainSite.find('.bt-section').addClass('hidden')
       $mainSite.find('.bt-section-tpl-vd').removeClass('hidden')
-                                          .addClass('active') 
+      $mainSite.find('.bt-section-tpl-vd').addClass('active') 
     }
 
     function __redirectStepVd($data){
@@ -90,7 +91,7 @@ jQuery(function ($) {
       $mainSite.removeClass('scroll');                                     
       $itemParents.trigger("to.owl.carousel", [0, 500, true])
       $itemsMobile.find('.bt-menu-mobile').removeClass('active')
-                                          .slideUp("swing")
+      $itemsMobile.find('.bt-menu-mobile').slideUp("swing")
       setTimeout( () => {
         __stopAllVideo()
       }, 1000 )
@@ -110,7 +111,7 @@ jQuery(function ($) {
           $ssVideo.removeClass('hidden')
 
           $itemsMobile.find('.bt-menu-mobile').removeClass('active')
-                                              .slideUp("swing")
+          $itemsMobile.find('.bt-menu-mobile').slideUp("swing")
         })
       });
     }
@@ -124,37 +125,65 @@ jQuery(function ($) {
       } )
     }
 
+    function __stopAllVimeo(){
+      $ctaPlay.addClass('play');
+      $ctaPlay.find('.icon-play-vd').addClass('paused');
+
+      $allVimeos.each(function(index){
+        let $idVimeo = $(this).attr('id')
+        console.log($idVimeo)
+        const $vimeoActive = new Vimeo.Player(`${$idVimeo}`);
+        $vimeoActive.pause()
+
+
+        $vimeoActive.getPaused().then(function(paused) {
+          
+          if(paused){
+            //$vimeoCurrent.play();
+          }else{
+            console.log("vimeoActive")
+            $vimeoActive.pause();
+          }
+        });
+
+      })
+    }
+
+    function __startVimeoVideo($data){
+      __stopAllVimeo()
+      let $vimeoCurrent = $(`#${$data} .owl-item.active .be-vimeo-vd`)
+      if($vimeoCurrent.length > 0){
+        const $idVimeo     = $vimeoCurrent.attr('id');
+        const $vimeoActive = new Vimeo.Player(`${$idVimeo}`);
+        $vimeoActive.play();
+      }
+    }
+
     function __startVdTemplate($data){
         let $id = $data.attr('id')
         
         __renderVdTemplate()
         __showAllVideo()         
         __stopAllVideo()
-        console.log("log")
+
+        if($allVimeos.length > 0){
+          __startVimeoVideo($id)          
+        }
+
         setTimeout( () => {
 
           $(".bt-icon-spacing>img").css({
             "left": '10px'
           }).fadeIn(500);
+          let $vdCurrent = $(`#${$id} .owl-item.active .video-js`)
           
-          let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
           $(`#${$id} .owl-item.active`).find('.bt-icon-play').removeClass('play');
           $(`#${$id} .owl-item.active`).find('.icon-play-vd').removeClass('paused');
-  
-          if($vdActive){
-            $vdActive.play();
-          }
-
-          let $vimeoActive = document.querySelector(`#${$id} .owl-item.active .be-vimeo-vd`);
-          console.log($vimeoActive)
-         
-          var videoPlayer = new Vimeo.Player(`#${$id} .owl-item.active #be-vimeo-vd`);
-
-          console.log(videoPlayer)
-          console.log("vimeo aaa")
-          if($vimeoActive){
-            console.log("vimeo")
-            videoPlayer.on('ended', onPlay);
+          if($vdCurrent.length > 0){
+            let $vdActive = document.querySelector(`#${$id} .owl-item.active .video-js`);
+            if($vdActive){
+              $vdActive.play();
+            }
           }
         }, 500 )  
     }
@@ -183,13 +212,21 @@ jQuery(function ($) {
   
       function __parentOnchange($itemParents, $itemChildrens){
         $itemParents.on('changed.owl.carousel', function(event) {
-          
+          let $vimeoActive = $itemParents.find('.owl-item.active .be-vimeo-vd');
           let $itemCurrent = $itemChildrens.find('.owl-item.current').offset();
           $ctaPlay.removeClass('play');
-  
+          console.log("check log")
           $(".bt-icon-spacing>img").css({
             "left": $itemCurrent.left
           }).fadeIn(500);
+
+          __stopAllVimeo()
+          
+          if($vimeoActive.length > 0){
+            const $idVimeo     = $vimeoActive.attr('id');
+            const $vimeoCurrent = new Vimeo.Player(`${$idVimeo}`);
+            $vimeoCurrent.play();
+          }
   
           $.each( $allVideo, function () {
             const v = $( this )
@@ -286,11 +323,6 @@ jQuery(function ($) {
               $ctaPlay.removeClass('play');
               $ctaPlay.find('.icon-play-vd').removeClass('paused');        
             }
-          }
-
-          let $vimeoActive = document.querySelector(".owl-item.active .be-vimeo-vd");
-          if($vimeoActive.length >0){
-
           }
         }
   
@@ -732,30 +764,50 @@ jQuery(function ($) {
     SecondVideo()
     TimelinesTemplate()
     RunCarouselInner()
- 
-    var video01Player = new Vimeo.Player('be-vimeo-vd');
-    console.log(video01Player)
-    video01Player.on('play', function() {
-      console.log('Played the first video');
-    });
-
- 
+    
+    // handle for button play when clicked
     $(document).on( 'click', '.icon-play-vd', function(e){
       e.preventDefault();
       e.stopPropagation();
-      const $idCarousel = $(this).parents('.bt-carousel-tpldv').attr('id');
-      let $vdActive = document.querySelector(`#${$idCarousel} .owl-item.active .video-js`);
-          if($vdActive){
-            if ($vdActive.paused){
-                $(this).removeClass('paused');
-                $(this).parents('.bt-icon-play').removeClass('play');
-                $vdActive.play();
-            }else{
-                $(this).addClass('paused');
-                $(this).addClass('.bt-icon-play').addClass('play');
-                $vdActive.pause();
-            }
+      const $idCarousel  = $(this).parents('.bt-carousel-tpldv').attr('id');
+      const $vdActive    = $(`#${$idCarousel} .owl-item.active .video-js`);
+      const $vimeoActive = $(`#${$idCarousel} .owl-item.active .be-vimeo-vd`);
+
+      // handle for video
+      if($vdActive.length > 0){
+        let $vdActive = document.querySelector(`#${$idCarousel} .owl-item.active .video-js`);
+        if($vdActive){
+          if ($vdActive.paused){
+              $(this).removeClass('paused');
+              $(this).parents('.bt-icon-play').removeClass('play');
+              $vdActive.play();
+          }else{
+              $(this).addClass('paused');
+              $(this).addClass('.bt-icon-play').addClass('play');
+              $vdActive.pause();
           }
+        }
+      }
+
+      // handle for vimeo
+      if($vimeoActive.length > 0){
+        let $idVimeo = $vimeoActive.attr('id');
+        const $vimeoCurrent = new Vimeo.Player(`${$idVimeo}`);
+
+        $vimeoCurrent.getPaused().then(function(paused) {
+          let $cta = $(`#${$idCarousel} .owl-item.active`).find('.icon-play-vd')
+          if(paused){
+            $cta.removeClass('paused');
+            $cta.parents('.bt-icon-play').removeClass('play');
+            $vimeoCurrent.play();
+          }else{
+            $cta.addClass('paused');
+            $cta.addClass('.bt-icon-play').addClass('play');
+            $vimeoCurrent.pause();
+          }
+        });
+      }
+
     });
   });
 });

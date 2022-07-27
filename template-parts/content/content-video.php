@@ -90,11 +90,19 @@ $timelines   = $tpl_vd['list_items_page_2_tplvd'];
             </div>
             
             <?php if($items['type_video'] == 'MP4'){ ?>
-                <video class="items video-js" src="<?php echo $items['link_video_step'] ?>" playsinline>
-                    <source src="<?php echo $items['link_video_step'] ?>" type="video/mp4">
-                </video>
+                
+                <?php if(!empty($items['link_video_step'])){ ?>
+                    <video class="items video-js" src="<?php echo $items['link_video_step'] ?>" playsinline>
+                        <source src="<?php echo $items['link_video_step'] ?>" type="video/mp4">
+                    </video>
+                <?php } ?>
+               
             <?php }else{ ?>
-                <div class="be-vimeo-vd" data-vimeo-responsive="true" data-vimeo-controls="false" data-vimeo-id="<?php echo $items['video_vimeo'] ?>" id="be-vimeo-vd"></div>
+
+                <?php if(!empty($items['video_vimeo'])){ ?>
+                    <div class="be-vimeo-vd" data-vimeo-responsive="true" data-vimeo-controls="false" data-vimeo-id="<?php echo $items['video_vimeo'] ?>" id="be-vimeo-<?php echo $items['video_vimeo'] ?>"></div>
+                <?php } ?>
+
             <?php } ?>
 
             <img src="https://job.beplusprojects.com/toto/wp-content/uploads/2022/03/icon-next.png" alt="icon-next" class="icon-switch-next be-icon-next">
