@@ -8,11 +8,11 @@
     height: auto;    
     width: auto;
     position: fixed;
-    left: 0;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: -999;
-    min-height: 200px;
+    min-height: 260px;
     display: flex;
     align-items: center;
     align-content: center;
@@ -22,8 +22,8 @@
     .ss-genrenal-button__content{
         .__genrenal-button{
             .__button{
-                font-size: 28px;
-                line-height: 38px;
+                font-size: 22px;
+                line-height: 35px;
                 letter-spacing: 0.32px;
                 color: #fff;
                 display: inline-block;
@@ -45,8 +45,8 @@
                 -o-transition: all 0.8s ease-in-out;
                 transform: rotate(-90deg);
                 @media only screen and (max-width: 991px){
-                    font-size: 20px;
-                    line-height: 30px;
+                    font-size: 18px;
+                    line-height: 28px;
                     padding: 8px 20px;
                     min-width: 100px;
                 }

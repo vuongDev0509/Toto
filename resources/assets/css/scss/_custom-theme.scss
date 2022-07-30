@@ -213,16 +213,16 @@ body{
             .bt-logo{
                 > img{
                     width: 100%;
-                    max-width: 300px;
+                    max-width: 220px;
                     float: left;
                     z-index: 99;
                     opacity: 0;
                     transition: all 900ms ease-in-out;
                     cursor: pointer;
                     left: 40px;
-                    top: 20px;
+                    top: 0px;
                     @media only screen and (max-width: 1300px){
-                      max-width: 250px;
+                      max-width: 180px;
                       left: 0;
                       top: -40px;
                     }
