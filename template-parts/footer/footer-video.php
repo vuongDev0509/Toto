@@ -5,13 +5,22 @@
  * Create Date: 29/10/2010
  */
 $tpl_vd = get_fields();
+$timlines = $tpl_vd['list_items_page_2_tplvd'];
 ?>
 <section class="bt-section bt-section-content-footer">
     <div class="bt-container-full">
         <div class="bt-carousel-child">
             <?php if($tpl_vd['icon_spacing']){ ?>
                 <div class="bt-icon-spacing">
-                    <img src="<?php echo $tpl_vd['icon_spacing']; ?>" alt="icon" />
+                    <img src="<?php echo $tpl_vd['icon_spacing']; ?>" alt="icon" / class="spacing-default">
+                    <?php if(!empty($timlines)): ?>
+                        <?php foreach( $timlines as $key => $item): ?>
+                            <?php $imgSapcing = $item['icon_spacing_timelines'] ?>
+                            <?php if(!empty($imgSapcing)): ?>
+                                <img src="<?php echo $imgSapcing ?>" class="spacing-timlines be_timelines_item_<?php echo $key ?>" alt="be_timelines_item_<?php echo $key ?>">
+                            <?php endif ?>   
+                        <?php endforeach; ?>
+                    <?php endif; ?>    
                 </div>
             <?php } ?>
             <div id="bt-childrens-video" class="bt-carousel-tpldv owl-carousel owl-theme">

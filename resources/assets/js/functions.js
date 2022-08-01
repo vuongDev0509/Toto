@@ -447,6 +447,18 @@ jQuery(function ($) {
     });
 
     function __showTotoBusVideo(){
+      let data = 'be_timelines_item_0';
+      const $parentSpacing = $('.page-template-template-video .site-footer .bt-icon-spacing > img');
+      if($parentSpacing.hasClass(`${data}`)){
+        $parentSpacing.removeClass('show')
+        $parentSpacing.addClass('hide')
+        $(`.bt-icon-spacing > img.${data}`).addClass('show')
+      }else{
+        $parentSpacing.removeClass('hide')
+        $('.page-template-template-video .site-footer .bt-icon-spacing > img.spacing-timlines').addClass('hide')
+        $(`.bt-icon-spacing > img.spacing-default`).addClass('show')
+      } 
+
       $totoBus.siblings().removeClass('active')
       $totoBus.siblings().addClass('hidden')
       
@@ -681,8 +693,17 @@ jQuery(function ($) {
       __activeCarousel()
       $footer.find(`.bt-carousel-tpldv.${data}`).show();  
       $mainSite.find(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).show();
-
-      //load carousel
+      const $parentSpacing = $('.page-template-template-video .site-footer .bt-icon-spacing > img');
+      if($parentSpacing.hasClass(`${data}`)){
+        $parentSpacing.removeClass('show')
+        $parentSpacing.addClass('hide')
+        $(`.bt-icon-spacing > img.${data}`).addClass('show')
+      }else{
+        $parentSpacing.removeClass('hide')
+        $('.page-template-template-video .site-footer .bt-icon-spacing > img.spacing-timlines').addClass('hide')
+        $(`.bt-icon-spacing > img.spacing-default`).addClass('show')
+      }
+    
       let $idParents  = $(`.bt-section-tpl-vd .bt-carousel-tpldv.${data}`).attr('id');
       let $idChildrens = $(`.site-footer .bt-carousel-tpldv.${data}`).attr('id');  
       VideoTemplate($(`#${$idParents}`), $(`#${$idChildrens}`))

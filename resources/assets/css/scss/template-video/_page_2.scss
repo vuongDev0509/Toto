@@ -140,7 +140,7 @@
           bottom: 46%;
         }
         &.toto-am-eislek-location-2{
-          left: 25%;
+          left: 35%;
           bottom: 30.5%;
         }
         &.toto-am-eislek-location-3{
@@ -154,6 +154,10 @@
         }
         &.toto-am-eislek-location-5{
           bottom: 48%;
+          right: 23%;
+        }
+        &.toto-am-eislek-location-6{
+          top: 48%;
           right: 23%;
         }
 
@@ -171,7 +175,7 @@
         }
         &.toto-revient-location-3{
           top: 70%;
-          left: 15%;
+          left: 28%;
           transform: translateX(-50%);
         }
         &.toto-revient-location-4{
@@ -180,12 +184,67 @@
         }
         &.toto-revient-location-5{
           bottom: 68%;
-          right: 10%;
+          right: 50%;
         }
-        // &.item-location-13{
-        //   left: 48%;
-        //   bottom: 27%;
-        // }
+
+        &.toto-lexpo-location{
+          top: 20%;
+          left: 20%; 
+        }
+        &.toto-lexpo-location-0{
+          bottom: 35%;
+          left: 45%;
+        }
+
+
+        &.toto-bus-tour-location{
+          bottom: 30%;
+          right: 55%;
+        }
+        &.toto-bus-tour-location-9{
+          top: 34%;
+          right: 55%;
+        }
+        &.toto-bus-tour-location-10{
+          top: 40%;
+          left: 10%;
+        }
+        &.toto-bus-tour-location-8{
+          bottom: 20%;
+          right: 50%;
+        }
+        &.toto-bus-tour-location-7{
+          top: 10%;
+          left: 30%;
+        }
+        &.toto-bus-tour-location-6{
+          top: 47%;
+          right: 50%;
+        }
+        &.toto-bus-tour-location-5{
+          top: 35%;
+          left: 25%;
+        }
+        &.toto-bus-tour-location-4{
+          bottom: 44%;
+          right: 35%;
+        }
+        &.toto-bus-tour-location-3{
+          top: 50%;
+          left: 32%;
+        }
+        &.toto-bus-tour-location-2{
+          bottom: 35%;
+          left: 35%;
+        }
+        &.toto-bus-tour-location-1{
+          bottom: 23%;
+          left: 24%;
+        }
+        &.toto-bus-tour-location-0{
+          top: 15%;
+          right: 57%;
+        }
       }
     }
   }
