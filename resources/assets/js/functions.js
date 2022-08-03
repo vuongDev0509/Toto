@@ -454,7 +454,7 @@ jQuery(function ($) {
         $parentSpacing.addClass('hide')
         $(`.bt-icon-spacing > img.${data}`).addClass('show')
       }else{
-				parentSpacing.removeClass('show')
+				$parentSpacing.removeClass('show')
         $parentSpacing.removeClass('hide')
         $('.page-template-template-video .site-footer .bt-icon-spacing > img.spacing-timlines').addClass('hide')
         $(`.bt-icon-spacing > img.spacing-default`).addClass('show')

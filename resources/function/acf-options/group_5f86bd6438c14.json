@@ -429,7 +429,7 @@
                     "key": "field_62ea4f8aabd2a",
                     "label": "Icon Spacing",
                     "name": "icon_spacing_timelines",
-                    "type": "text",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -438,11 +438,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "return_format": "url",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 },
                 {
                     "key": "field_61efb02e11dda",
@@ -2399,5 +2404,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1659522994
+    "modified": 1659523255
 }
