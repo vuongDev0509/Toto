@@ -53,10 +53,11 @@ $font-family: 'Nunito';
   .icon-switch-next{
     max-width: 50px;
     position: fixed;
-    z-index: 9999;
+    z-index: -9999;
     bottom: 80px;
     right: 90px;
     cursor: pointer;
+    display: none;
   }
 }
 

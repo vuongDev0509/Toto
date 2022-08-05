@@ -22,10 +22,10 @@ jQuery(function ($) {
 
     __startVdTemplate($itemParents);
 
-    $logo.click(function(e){
-      e.preventDefault();
-      __backHomepage();
-    })
+    // $logo.click(function(e){
+    //   e.preventDefault();
+    //   __backHomepage();
+    // })
 
     $navDesktop.click(function(v){
       __stopAllVideo();
