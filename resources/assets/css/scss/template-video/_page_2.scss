@@ -264,11 +264,12 @@
     right: 0;
     top: 15%;
     width: 100%;
-    max-width: 60%;
+    max-width: calc(100% / 3 - 50px);
     height: auto;
     transition: all .3s ease-out;
     @media only screen and (max-width: 767px){
       transform: translateX(100%);
+      max-width: 60%;
     }
     .toggle-menu-bar{
       position: absolute;
