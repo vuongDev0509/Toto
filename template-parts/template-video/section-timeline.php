@@ -63,6 +63,7 @@ $timelines          = $tpl_vd['list_items_page_2_tplvd'];
       <!-- show menu template -->
       <?php if (!empty($list_item)): ?>
         <div class="bt_list_item_header_video">
+          <button type="button" name="button" class="toggle-menu-bar toggle-menu-bar-custom"></button>
           <?php foreach ($list_item as $key => $value):
             $background      = $value['background_color'] ? $value['background_color'] : "#539291" ;
             $color           = $value['color'] ? $value['color'] : "#fff" ;

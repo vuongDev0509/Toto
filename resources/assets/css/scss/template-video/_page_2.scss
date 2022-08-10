@@ -262,16 +262,18 @@
   .bt_list_item_header_video{
     position: absolute;
     right: 0;
-    top: 10%;
+    top: 15%;
     width: 100%;
-    max-width: calc(100% / 3 - 50px);
+    max-width: 60%;
     height: auto;
     transition: all .3s ease-out;
-    //transform: translateY(-50%);
+    @media only screen and (max-width: 767px){
+      transform: translateX(100%);
+    }
     .toggle-menu-bar{
       position: absolute;
       top: -25px;
-      left: -40px;
+      left: -32px;
       transform: translateY(-50%);
       background-image: url(../images/back.png);
       padding: 10px;
@@ -283,34 +285,31 @@
       background-position: center;
       border-radius: 0;
       transition: all .3s ease-out;
-      opacity: 0.4;
-
+      opacity: 0;
+      z-index: -999;
       @media only screen and (max-width: 991px){
         width: 30px;
         height: 30px;
-        top: -20px;
+      //  top: 0px;
+      //   left: -32px;
+      }
+      @media only screen and (max-width: 767px){
+        opacity: 0.4;
+        z-index: 9;
       }
 
       &.close{
         background-image: url(../images/next.png);
         opacity: 0.4;
-        left: 0;
+        left: 0px;
+        top: -14px;
       }
       &:hover{
         opacity: 1;
       }
     }
     &.close{
-      transform: translateX(100%);
-    }
-    // @media only screen and (max-width: 1199px){
-    //   transform: translateY(0%);
-    //   top:0;
-    //   //overflow: scroll;
-    //   max-height: 277px;
-    // }
-    @media only screen and (max-width: 767px){
-      display: none;
+      transform: translateX(0%);
     }
     .heading{
       font-size: 40px;
