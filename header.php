@@ -38,7 +38,7 @@
 	</div>
 	<div class="bt-header-main">
 		<div class="bt-container">
-			<a class="bt-logo" href="/toto">
+			<a class="bt-logo" href="<?php echo get_home_url(); ?>">
 				<?php
 				$tpl_vd = get_fields();
 				if($tpl_vd['logo_site_tpl_vd']){ ?>

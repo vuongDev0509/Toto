@@ -209,7 +209,7 @@
                             "placeholder": "",
                             "maxlength": "",
                             "rows": 6,
-                            "new_lines": ""
+                            "new_lines": "br"
                         },
                         {
                             "key": "field_6216dccf43180",
@@ -353,7 +353,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
@@ -426,7 +426,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_62e7d5d8badc6",
+                    "key": "field_62ea4f8aabd2a",
                     "label": "Icon Spacing",
                     "name": "icon_spacing_timelines",
                     "type": "image",
@@ -601,7 +601,8 @@
                             },
                             "choices": {
                                 "Video": "Video",
-                                "Image": "Image"
+                                "Image": "Image",
+                                "Vimeo": "Vimeo"
                             },
                             "default_value": [
                                 "video"
@@ -615,7 +616,7 @@
                         },
                         {
                             "key": "field_6217067456230",
-                            "label": "Video",
+                            "label": "Video MP4",
                             "name": "link",
                             "type": "text",
                             "instructions": "",
@@ -626,6 +627,33 @@
                                         "field": "field_62bd5d586a61b",
                                         "operator": "==",
                                         "value": "Video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62df9e4427c58",
+                            "label": "Video Vimeo",
+                            "name": "vd_vimeo",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62bd5d586a61b",
+                                        "operator": "==",
+                                        "value": "Vimeo"
                                     }
                                 ]
                             ],
@@ -1220,7 +1248,7 @@
         },
         {
             "key": "field_5f896a6e26d13",
-            "label": "Body Template",
+            "label": "Toto Bus Tour",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -1233,30 +1261,6 @@
             },
             "placement": "top",
             "endpoint": 0
-        },
-        {
-            "key": "field_62e7d4a04f218",
-            "label": "Icon Spacing",
-            "name": "icon_spacing",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
         },
         {
             "key": "field_5f896a85c30f6",
@@ -1335,15 +1339,77 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5f896b27c30f8",
-                    "label": "Link Video",
-                    "name": "link_video_step",
-                    "type": "text",
+                    "key": "field_62df90489ffcd",
+                    "label": "Type Video",
+                    "name": "type_video",
+                    "type": "select",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "33.3",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "MP4": "MP4",
+                        "Vimeo": "Vimeo"
+                    },
+                    "default_value": [
+                        "MP4"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5f896b27c30f8",
+                    "label": "Video MP4",
+                    "name": "link_video_step",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62df90489ffcd",
+                                "operator": "==",
+                                "value": "MP4"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33.3",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62df90b89ffce",
+                    "label": "Video Vimeo",
+                    "name": "video_vimeo",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62df90489ffcd",
+                                "operator": "==",
+                                "value": "Vimeo"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33.3",
                         "class": "",
                         "id": ""
                     },
@@ -1362,7 +1428,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "33.3",
                         "class": "",
                         "id": ""
                     },
@@ -1765,6 +1831,126 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_62df5970067cb",
+            "label": "General Button",
+            "name": "general_button",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_62df59ad067cc",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62df59bb067cd",
+                    "label": "Type",
+                    "name": "type",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "URL": "URL",
+                        "Content": "Content"
+                    },
+                    "default_value": [
+                        "Content"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_62df5a17067ce",
+                    "label": "Url",
+                    "name": "url",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62df59bb067cd",
+                                "operator": "==",
+                                "value": "URL"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62df5a47067cf",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62df59bb067cd",
+                                "operator": "==",
+                                "value": "Content"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "elementor_library"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
         },
         {
             "key": "field_62032588a3edd",
@@ -2218,5 +2404,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1659360782
+    "modified": 1659523255
 }
