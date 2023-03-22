@@ -6,7 +6,7 @@ jQuery(document).ready(function(jQuery) {
     var isSectionScroll = jQuery(".site-main .bt-section");
 
     isBtnAjax.click(function(){
-        // let isPostTye = jQuery(".page-template-template-video .bt-section .bt-carousel-page-inner").data("posttype");
+        
         let isPostTye = jQuery(this).parents(".bt-carousel-page-inner").data("posttype");
         let id_post = jQuery(this).data("id");
         let data_sroll = jQuery(this).parents(".bt-carousel-page-inner").data("scroll");
